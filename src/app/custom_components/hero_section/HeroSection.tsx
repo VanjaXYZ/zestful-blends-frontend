@@ -1,7 +1,3 @@
-import Logo from "@/assets/logo-with-outline.png";
-
-import Image from "next/image";
-import Section from "../Section";
 import HeroContent from "./HeroContent";
 import HeroImage from "./HeroImage";
 import HeroJuiceInfo from "./HeroJuiceInfo";
