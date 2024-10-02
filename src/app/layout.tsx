@@ -24,7 +24,7 @@ export default function RootLayout({
         <HeaderInfo />
         <TopNavigation />
         <WaveDivider />
-        <HeroSection />
+
         {children}
       </body>
     </html>
