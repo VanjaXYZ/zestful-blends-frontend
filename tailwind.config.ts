@@ -66,7 +66,7 @@ const config: Config = {
         "primary-orange": "#Ed7905",
         "primary-yellow": "#FFC10C",
         "primary-yellow-dark-shade": "#DFB129",
-
+        "green-darker": "#78B241",
         // SECONDARY COLORS
         "secondary-dark-brown": "#392734",
         "secondary-silver": "#392734",

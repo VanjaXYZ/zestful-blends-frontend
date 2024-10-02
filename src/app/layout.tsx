@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import TopNavigation from "./custom_components/header/TopNavigation";
 import "./globals.css";
 import HeaderInfo from "./custom_components/header_info/HeaderInfo";
+import HeroSection from "./custom_components/hero_section/HeroSection";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={montserrat.className + " w-full"}>
         <HeaderInfo />
         <TopNavigation />
+        <HeroSection />
         {children}
       </body>
     </html>
