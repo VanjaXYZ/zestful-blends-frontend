@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import TopNavigation from "./custom_components/header/TopNavigation";
-import "./globals.css";
 import HeaderInfo from "./custom_components/header_info/HeaderInfo";
-import HeroSection from "./custom_components/hero_section/HeroSection";
-import WaveDivider from "./custom_components/shared/WaveDivider";
+import "./globals.css";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -20,10 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className + " w-full"}>
+      <body className={montserrat.className + " w-full flex flex-col"}>
         <HeaderInfo />
         <TopNavigation />
-        <WaveDivider />
 
         {children}
       </body>

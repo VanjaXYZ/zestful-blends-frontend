@@ -6,7 +6,7 @@ import Person from "@/assets/skybenversep3150_Give_me_some_real_people_enjoying_
 const HeroJuiceInfo = () => {
   return (
     <div className="bg-green-darker rounded-s-3xl flex justify-between px-20 py-28  overflow-x-clip ml-28 mt-5  relative  ">
-      <div className="w-[550px] ">
+      <div className="max-w-[550px] ">
         <h1 className="text-white text-6xl font-bold mb-8 ">
           What Is About Our Juice
         </h1>
