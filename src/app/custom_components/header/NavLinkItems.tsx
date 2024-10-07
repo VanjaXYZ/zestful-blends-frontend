@@ -35,7 +35,7 @@ const navLinks = [
 const NavLinkItems = () => {
   const pathname = usePathname();
   return (
-    <ul className="flex gap-7">
+    <ul className="flex gap-7 flex-col sm:flex-row">
       {navLinks?.map((link: NavLinkItemProp) => (
         <li key={link.id}>
           <Link
