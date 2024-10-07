@@ -1,4 +1,5 @@
 import DiscoverOurMenu from "./custom_components/discover-menu/DiscoverOurMenu";
+import FreshlySqueezedSection from "./custom_components/freshly-squeezed/FreshlySqueezedSection";
 import HeroSection from "./custom_components/hero_section/HeroSection";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main className="w-full flex flex-col gap-8">
       <HeroSection />
       <DiscoverOurMenu />
+      <FreshlySqueezedSection />
     </main>
   );
 }
