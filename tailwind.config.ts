@@ -71,6 +71,7 @@ const config: Config = {
         "green-darker": "#78B241",
         "primary-teal": "#83C5BE",
         "primary-dark-teal": "#3D968C",
+        "primary-pink": "#DF9BC9",
         // SECONDARY COLORS
         "secondary-dark-brown": "#392734",
         "secondary-silver": "#392734",
