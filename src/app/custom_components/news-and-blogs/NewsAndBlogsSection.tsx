@@ -38,7 +38,7 @@ const items = [
 const NewsAndBlogsSection = () => {
   return (
     <section
-      className={`py-8 bg-primary-pink flex flex-col gap-20 ${styles.bottomWave}`}
+      className={`py-8 bg-primary-pink flex flex-col gap-20 ${styles.bottomWave} `}
     >
       <h2 className="text-4xl font-bold text-white text-center">
         Our News & Blogs

@@ -17,7 +17,7 @@ const HeroJuiceInfo = () => {
           fames ac ante ipsum primis.
         </p>
         <Button
-          size={"xl"}
+          size={"lg"}
           className="bg-primary-orange  font-bold hover:bg-primary-yellow-dark-shade text-white"
         >
           Shop Juices

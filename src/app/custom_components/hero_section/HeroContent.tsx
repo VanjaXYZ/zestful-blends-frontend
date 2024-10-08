@@ -25,7 +25,7 @@ const HeroContent = () => {
       </p>
       <Button
         className="bg-primary-yellow text-black font-bold hover:bg-primary-yellow-dark-shade"
-        size={"xl"}
+        size={"lg"}
       >
         Shop Juices
       </Button>
