@@ -1,10 +1,11 @@
 import React from "react";
 import SubscribeInput from "./SubscribeInput";
 import { Button } from "@/components/ui/button";
+import Footer from "../footer/Footer";
 
 const SubscribeSection = () => {
   return (
-    <section className="bg-primary-sky-blue py-12 flex justify-center">
+    <section className="bg-primary-sky-blue py-12 flex justify-center flex-col items-center">
       <div className="border border-dashed w-[70%] flex flex-col items-center p-8 gap-8 rounded-3xl">
         <h3 className="text-primary-yellow text-4xl font-semibold">
           Subscribe To Our Newsletter
@@ -18,6 +19,7 @@ const SubscribeSection = () => {
           <SubscribeInput />
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
