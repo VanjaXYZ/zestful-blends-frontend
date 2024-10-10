@@ -8,20 +8,22 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { IoMenu } from "react-icons/io5";
+import MobileNavLinkItems from "./MobileNavLinkItems";
+import MobileTransformedLogo from "./MobileTransformedLogo";
 
 const MobileNavigationMenu = () => {
   return (
-    <nav className="flex justify-end">
+    <nav className="flex justify-end lg:hidden">
       <Sheet>
         <SheetTrigger>
           <IoMenu size={42} color="white" />
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className="min-w-full bg-primary-sky-blue mt-24 lg:hidden">
           <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
-            <SheetDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
+            <SheetTitle></SheetTitle>
+            <SheetDescription className="flex justify-between">
+              <MobileTransformedLogo />
+              <MobileNavLinkItems />
             </SheetDescription>
           </SheetHeader>
         </SheetContent>
