@@ -5,7 +5,7 @@ import InfoHeaderEmail from "./InfoHeaderEmail";
 
 const HeaderInfo = () => {
   return (
-    <div className="flex justify-between bg-primary-yellow-dark-shade py-2 w-full flex-col sm:flex-row">
+    <div className="justify-between bg-primary-yellow-dark-shade py-2 w-full flex-col sm:flex-row hidden lg:flex">
       <InfoHeaderIcons />
       <InfoHeaderMessage />
       <InfoHeaderEmail />
