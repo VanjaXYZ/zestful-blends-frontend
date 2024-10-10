@@ -1,12 +1,12 @@
 import DesktopNavigationMenu from "./DesktopNavigationMenu";
-import MobileNavigationMenu from "./MobileNavigationMenu";
+import MobileHeader from "./mobile-design/MobileHeader";
 
 const TopNavigation = () => {
   return (
-    <header className="w-full">
+    <>
       <DesktopNavigationMenu />
-      <MobileNavigationMenu />
-    </header>
+      <MobileHeader />
+    </>
   );
 };
 
