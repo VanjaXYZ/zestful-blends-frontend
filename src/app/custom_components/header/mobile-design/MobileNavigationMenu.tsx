@@ -11,10 +11,10 @@ import { IoMenu } from "react-icons/io5";
 
 const MobileNavigationMenu = () => {
   return (
-    <nav className="lg:hidden flex justify-end">
+    <nav className="flex justify-end">
       <Sheet>
         <SheetTrigger>
-          <IoMenu size={36} />
+          <IoMenu size={42} color="white" />
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
