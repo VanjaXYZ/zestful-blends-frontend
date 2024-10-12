@@ -6,9 +6,9 @@ const FreshlySqueezedItem = ({
   icon: JSX.Element;
 }) => {
   return (
-    <div className="flex flex-col items-center w-full border-r-2 border-dashed gap-4 last:border-none">
+    <div className="flex flex-col items-center md:border-dashed md:border-r-2 md:px-6 md:gap-y-2 last:border-none">
       {icon}
-      <p className="text-center font-semibold text-white">{productName}</p>
+      <span className="font-semibold text-white text-sm">{productName}</span>
     </div>
   );
 };

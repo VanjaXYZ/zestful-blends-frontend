@@ -4,7 +4,7 @@ import Image from "next/image";
 import cherry from "@/assets/skybenversep3150_Please_generate_a_real_cherry_on_a_white_backg_a9b08a6c-9394-4a18-b3ab-fe3f72164563-removebg-preview.png";
 const HeroImage = () => {
   return (
-    <div className="w-1/2 ">
+    <div className="w-1/2 hidden lg:inline-block">
       <div className="relative mt-60">
         <Image
           src={juices}

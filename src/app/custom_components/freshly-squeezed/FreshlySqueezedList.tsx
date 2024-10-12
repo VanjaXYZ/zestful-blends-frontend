@@ -39,14 +39,14 @@ const items = [
 
 const FreshlySqueezedList = () => {
   return (
-    <div className="flex flex-col items-center py-12 justify-center">
-      <h2 className="text-4xl font-bold text-white text-center">
+    <div className="flex flex-col items-center py-12 justify-center w-full">
+      <h2 className="lg:text-4xl text-xl font-bold text-white text-center">
         Freshly Squeezed For You
       </h2>
-      <div className="flex justify-around items-center py-24 w-full">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 py-8">
         {items?.map((item: any) => (
           <FreshlySqueezedItem
-            icon={<item.imageSrc size={80} color={"white"} />}
+            icon={<item.imageSrc size={40} color={"white"} />}
             productName={item.productName}
             key={item.id}
           />

@@ -4,8 +4,8 @@ import FooterList from "./FooterList";
 
 const Footer = () => {
   return (
-    <footer className="block p-24">
-      <section className="flex justify-around">
+    <footer className="w-full">
+      <section className="flex justify-around flex-col md:flex-row">
         <FooterLogoAndSocials />
         <FooterList />
       </section>

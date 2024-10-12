@@ -20,14 +20,14 @@ const BlogsList = ({ blog }: { blog: BlogProps }) => {
         alt="Blog Image"
         className="rounded-3xl w-min"
       />
-      <p className="font-semibold h-24">
+      <p className="font-semibold h-16">
         By {blog.author} | {blog.date}
       </p>
       <h3 className="font-bold text-xl antialiased h-12">{blog.title}</h3>
       <p className="text-neutral-700 h-24 overflow-hidden text-ellipsis">
         {blog.description}
       </p>
-      <Button className="w-fit bg-primary-dark-teal my-2 font-semibold">
+      <Button className="w-fit bg-primary-dark-teal mb-4 font-semibold rounded-full">
         Read More
       </Button>
     </div>
