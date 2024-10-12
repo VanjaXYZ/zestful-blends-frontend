@@ -48,7 +48,7 @@ const SubscribeInput = () => {
                 <Input
                   placeholder="Enter Email Address"
                   {...field}
-                  className="w-[300px]"
+                  className="max-w-[300px]"
                 />
               </FormControl>
 

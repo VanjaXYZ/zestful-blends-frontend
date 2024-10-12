@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className + " w-full flex flex-col"}>
+      <body className={montserrat.className + " w-full"}>
         <HeaderInfo />
         <TopNavigation />
 

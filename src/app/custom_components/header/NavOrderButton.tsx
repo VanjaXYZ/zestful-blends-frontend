@@ -4,7 +4,7 @@ import React from "react";
 const NavOrderButton = ({ textColor }: { textColor: string }) => {
   return (
     <Button
-      className={`bg-primary-yellow ${textColor} font-bold hover:bg-primary-yellow-dark-shade`}
+      className={`bg-primary-yellow ${textColor} font-bold hover:bg-primary-yellow-dark-shade rounded-full`}
     >
       Order Now
     </Button>

@@ -38,12 +38,12 @@ const items = [
 const NewsAndBlogsSection = () => {
   return (
     <section
-      className={`py-8 bg-primary-pink flex flex-col gap-20 ${styles.bottomWave} `}
+      className={`py-8 bg-primary-pink flex flex-col gap-10 ${styles.bottomWave} `}
     >
       <h2 className="text-4xl font-bold text-white text-center">
         Our News & Blogs
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-12 gap-8 place-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-12 gap-2 place-items-center">
         {items?.map((blog: any) => (
           <BlogsList blog={blog} key={blog.id} />
         ))}
