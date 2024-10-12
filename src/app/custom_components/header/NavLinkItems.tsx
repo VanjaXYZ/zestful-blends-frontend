@@ -1,10 +1,17 @@
 "use client";
-import { NavLinkItemProp } from "@/app/interfaces";
+import { NavLinkSubpages } from "@/app/interfaces";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 
-const navLinks = [
+const navLinks: NavLinkSubpages[] = [
   {
     id: 1,
     href: "/",
@@ -19,6 +26,28 @@ const navLinks = [
     id: 3,
     href: "/pages",
     text: "Pages",
+    subpages: [
+      {
+        id: 3.1,
+        href: "/about-us",
+        text: "About Us",
+      },
+      {
+        id: 3.2,
+        href: "/shop",
+        text: "Shop",
+      },
+      {
+        id: 3.3,
+        href: "/blogs",
+        text: "Blogs",
+      },
+      {
+        id: 3.4,
+        href: "/faq",
+        text: "FAQ",
+      },
+    ],
   },
   {
     id: 4,
@@ -34,21 +63,58 @@ const navLinks = [
 
 const NavLinkItems = () => {
   const pathname = usePathname();
+
   return (
-    <ul className="flex gap-7 flex-col sm:flex-row">
-      {navLinks?.map((link: NavLinkItemProp) => (
-        <li key={link.id}>
-          <Link
-            href={link.href}
-            className={`${
-              pathname === link.href && "underline underline-offset-4"
-            } text-white font-bold text-lg`}
-          >
-            {link.text}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <NavigationMenu className="flex items-start [&_div.absolute]:right-10 [&_div.absolute]:top-12">
+      <NavigationMenuList>
+        {navLinks.map((link: NavLinkSubpages) => (
+          <NavigationMenuItem key={link.id}>
+            {link.subpages ? (
+              <>
+                <NavigationMenuTrigger className="text-white font-bold p-4">
+                  {link.text}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="w-full flex flex-col gap-8">
+                  <NavigationMenuList className="flex flex-col bg-primary-green">
+                    {link.subpages.map((subpage) => (
+                      <NavigationMenuItem
+                        key={subpage.id}
+                        className="transition-colors w-[150px] text-start py-2 text-white font-bold hover:underline hover:underline-offset-4"
+                      >
+                        <Link
+                          href={subpage.href}
+                          passHref
+                          className="text-white"
+                        >
+                          <NavigationMenuLink
+                            className={`font-normal p-8 text-start text-white${
+                              pathname === subpage.href &&
+                              "underline underline-offset-2"
+                            }`}
+                          >
+                            {subpage.text}
+                          </NavigationMenuLink>
+                        </Link>
+                      </NavigationMenuItem>
+                    ))}
+                  </NavigationMenuList>
+                </NavigationMenuContent>
+              </>
+            ) : (
+              <Link href={link.href} passHref>
+                <NavigationMenuLink
+                  className={`text-white p-4 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-10 rounded-md px-4 py-2 font-bold ${
+                    pathname === link.href && "underline underline-offset-2"
+                  }`}
+                >
+                  {link.text}
+                </NavigationMenuLink>
+              </Link>
+            )}
+          </NavigationMenuItem>
+        ))}
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 
