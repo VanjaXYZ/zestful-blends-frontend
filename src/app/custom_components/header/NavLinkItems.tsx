@@ -82,18 +82,12 @@ const NavLinkItems = () => {
                         className="transition-colors w-[150px] text-start py-2 text-white font-bold hover:underline hover:underline-offset-4"
                       >
                         <Link
+                          key={subpage.id}
                           href={subpage.href}
                           passHref
                           className="text-white"
                         >
-                          <NavigationMenuLink
-                            className={`font-normal p-8 text-start text-white${
-                              pathname === subpage.href &&
-                              "underline underline-offset-2"
-                            }`}
-                          >
-                            {subpage.text}
-                          </NavigationMenuLink>
+                          {subpage.text}
                         </Link>
                       </NavigationMenuItem>
                     ))}
@@ -101,14 +95,14 @@ const NavLinkItems = () => {
                 </NavigationMenuContent>
               </>
             ) : (
-              <Link href={link.href} passHref>
-                <NavigationMenuLink
-                  className={`text-white p-4 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-10 rounded-md px-4 py-2 font-bold ${
-                    pathname === link.href && "underline underline-offset-2"
-                  }`}
-                >
-                  {link.text}
-                </NavigationMenuLink>
+              <Link
+                href={link.href}
+                passHref
+                className={`text-white p-4 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-10 rounded-md px-4 py-2 font-bold ${
+                  pathname === link.href && "underline underline-offset-2"
+                }`}
+              >
+                {link.text}
               </Link>
             )}
           </NavigationMenuItem>
