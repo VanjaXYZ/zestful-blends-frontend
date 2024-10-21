@@ -18,7 +18,7 @@ const DiscoverMenuProduct = ({
         alt="Zestful Blends Product Image"
         className="rounded-full"
       />
-      <Button className="bg-primary-dark-orange text-white font-semibold rounded-full w-[150px]">
+      <Button className="bg-primary-dark-orange text-white font-semibold rounded-full w-[150px] hover:bg-primary-orange transition-colors">
         {productName}
       </Button>
     </div>

@@ -27,7 +27,7 @@ const BlogsList = ({ blog }: { blog: BlogProps }) => {
       <p className="text-neutral-700 h-24 overflow-hidden text-ellipsis">
         {blog.description}
       </p>
-      <Button className="w-fit bg-primary-dark-teal mb-4 font-semibold rounded-full">
+      <Button className="bg-primary-dark-teal w-[200px] font-semibold transition-colors hover:bg-white rounded-full text-white hover:text-black">
         Read More
       </Button>
     </div>

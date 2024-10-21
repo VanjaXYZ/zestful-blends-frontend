@@ -17,19 +17,17 @@ import { Button } from "@/components/ui/button";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 const formSchema = z.object({
-  username: z.string().min(2).max(50),
+  email: z.string().min(2).max(50),
 });
 
 const SubscribeInput = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
     },
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values);
   }
 
@@ -41,14 +39,14 @@ const SubscribeInput = () => {
       >
         <FormField
           control={form.control}
-          name="username"
+          name="email"
           render={({ field }) => (
             <FormItem>
               <FormControl>
                 <Input
                   placeholder="Enter Email Address"
                   {...field}
-                  className="max-w-[300px]"
+                  className="max-w-[300px] border-white rounded-full placeholder:text-neutral-100"
                 />
               </FormControl>
 
@@ -56,7 +54,10 @@ const SubscribeInput = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-primary-orange flex gap-2">
+        <Button
+          type="submit"
+          className="bg-primary-orange flex gap-2 rounded-full text-white transition-colors hover:bg-primary-dark-orange "
+        >
           <span>Subscribe</span> <FaLongArrowAltRight size={18} />
         </Button>
       </form>

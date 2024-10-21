@@ -52,7 +52,7 @@ const FreshlySqueezedList = () => {
           />
         ))}
       </div>
-      <Button className="bg-primary-dark-teal rounded-md w-[200px] font-semibold">
+      <Button className="bg-primary-dark-teal w-[200px] font-semibold transition-colors hover:bg-white rounded-full text-white hover:text-black">
         Our Story
       </Button>
     </div>
