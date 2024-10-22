@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import TopNavigation from "./custom_components/header/TopNavigation";
 import HeaderInfo from "./custom_components/header_info/HeaderInfo";
 import "./globals.css";
+import SubscribeSection from "./custom_components/subscribe/SubscribeSection";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
         <TopNavigation />
 
         {children}
+        <SubscribeSection />
       </body>
     </html>
   );
