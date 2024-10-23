@@ -65,7 +65,7 @@ const NavLinkItems = () => {
   const pathname = usePathname();
 
   return (
-    <NavigationMenu className="flex items-start [&_div.absolute]:right-10 [&_div.absolute]:top-12">
+    <NavigationMenu className="flex items-start [&_div.absolute]:right-10 [&_div.absolute]:top-12 z-[1000]">
       <NavigationMenuList>
         {navLinks.map((link: NavLinkSubpages) => (
           <NavigationMenuItem key={link.id}>
