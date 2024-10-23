@@ -63,6 +63,7 @@ const config: Config = {
 
         // PRIMARY COLORS
         "primary-green": "#93BE3C",
+        "primary-olive": "#B5E48C",
         "primary-orange": "#Ed7905",
         "primary-dark-orange": "#D04B10",
         "primary-yellow": "#FFC10C",
@@ -76,6 +77,7 @@ const config: Config = {
         // SECONDARY COLORS
         "secondary-dark-brown": "#392734",
         "secondary-silver": "#392734",
+        "button-brown": "#B77D43",
       },
     },
   },
