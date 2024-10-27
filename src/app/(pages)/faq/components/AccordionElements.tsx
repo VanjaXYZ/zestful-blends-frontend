@@ -12,10 +12,10 @@ const AccordionElements = ({ elements }: { elements: AccordionProps[] }) => {
     <Accordion type="multiple" className="w-full">
       {elements?.map((data: AccordionProps, index: number) => (
         <AccordionItem value={data.id} key={data.id}>
-          <AccordionTrigger className="font-bold">
+          <AccordionTrigger className="font-bold text-sm lg:text-base text-start px-1">
             {data.header}
           </AccordionTrigger>
-          <AccordionContent>{data.text}</AccordionContent>
+          <AccordionContent className="px-1">{data.text}</AccordionContent>
         </AccordionItem>
       ))}
     </Accordion>
