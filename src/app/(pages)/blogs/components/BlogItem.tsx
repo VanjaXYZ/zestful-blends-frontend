@@ -7,7 +7,7 @@ import { BlogProps } from "./BlogList";
 
 const BlogItem = ({ blog }: { blog: BlogProps }) => {
   return (
-    <div className="flex justify-center flex-col items-center border border-dashed  p-6 rounded-xl gap-2">
+    <div className="flex justify-center flex-col items-center border border-dashed p-2 rounded-xl gap-2">
       <Image
         src={blog.src}
         width={400}
@@ -20,10 +20,10 @@ const BlogItem = ({ blog }: { blog: BlogProps }) => {
         <span className="font-semibold text-neutral-500">{blog.date}</span>
       </div>
       <h3 className="text-xl md:text-2xl text-white font-bold">{blog.title}</h3>
-      <Link href={`/blogs/${blog.id}`}>
+      <Link href={`/blogs/${blog.id}`} className="w-full lg:w-fit">
         <Button
           variant={"outline"}
-          className="rounded-xl bg-button-brown border-none transition-colors hover:bg-transparent font-semibold text-white hover:outline-2 hover:outline-double outline-white"
+          className="rounded-xl bg-button-brown border-none transition-colors hover:bg-transparent font-semibold text-white hover:outline-2 hover:outline-double outline-white w-full lg:w-fit"
         >
           Read More
         </Button>

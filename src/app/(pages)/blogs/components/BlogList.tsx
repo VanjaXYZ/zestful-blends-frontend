@@ -33,7 +33,7 @@ const BlogList = () => {
 
   return (
     <>
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-2 py-4 gap-2 place-items-center">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-4 gap-8 lg:gap-3 w-full">
         {paginatedBlogs?.map((blog: BlogProps, index: number) => (
           <BlogItem blog={blog} key={blog.id} />
         ))}
