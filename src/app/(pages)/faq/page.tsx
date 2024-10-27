@@ -68,41 +68,46 @@ const page = () => {
   return (
     <main className="">
       <Breadcrumbs currentPageName="FAQ" />
-      <section className="mt-24 p-24 bg-cream-yellow">
-        <div className="grid grid-cols-2 place-items-center overflow-hidden gap-4">
-          <div className="flex flex-col gap-4 w-full">
-            <h2 className="text-4xl text-crimson-red font-bold">
-              Freaquently Asked Questions
-            </h2>
-            <AccordionElements elements={accordionData} />
-          </div>
+      <section className="lg:mt-24 lg:p-24 bg-cream-yellow">
+        <Image
+          src={FourJuices}
+          width={320}
+          height={320}
+          alt="Zestful Blends Four Juices"
+          className="lg:rounded-xl lg:w-[325px] lg:h-[475px] object-cover w-full lg:hidden"
+        />
+        <h2 className="text-2xl lg:text-start text-center lg:text-4xl text-crimson-red font-bold">
+          Freaquently Asked Questions
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center overflow-hidden gap-4">
+          <AccordionElements elements={accordionData} />
           <Image
             src={FourJuices}
             width={320}
             height={320}
             alt="Zestful Blends Four Juices"
-            className="rounded-xl  w-[325px] h-[475px] object-cover"
+            className="lg:rounded-xl lg:w-[325px] lg:h-[475px] object-cover w-full hidden lg:block"
           />
         </div>
       </section>
-      <section className="p-24 bg-primary-dark-olive">
-        <div className="grid grid-cols-2 place-items-center overflow-hidden gap-4">
+      <section className="lg:p-24 bg-primary-dark-olive pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center overflow-hidden gap-4">
           <Image
             src={YellowJuice}
             width={320}
             height={320}
-            alt="Zestful Blends Four Juices"
-            className="rounded-xl w-[325px] h-[475px] object-cover"
+            alt="Zestful Blends Yellow Smoothie"
+            className="lg:rounded-xl lg:w-[325px] lg:h-[475px] object-cover w-full"
           />
           <div className="flex flex-col gap-4 w-full">
-            <h2 className="text-4xl text-white font-bold">
+            <h2 className="text-2xl lg:text-start text-center lg:text-4xl text-white font-bold">
               Help Keep Your Health On Track
             </h2>
             <AccordionElements elements={accordionHealthData} />
           </div>
         </div>
       </section>
-      <section className="p-24 bg-primary-darkish-orange">
+      <section className="lg:p-24 bg-primary-darkish-orange">
         <SendQuestion />
       </section>
     </main>
