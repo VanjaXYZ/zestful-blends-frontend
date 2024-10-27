@@ -60,24 +60,47 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
-
-        // PRIMARY COLORS
         "primary-green": "#93BE3C",
         "primary-olive": "#B5E48C",
+        "primary-dark-olive": "#C0A146",
         "primary-orange": "#Ed7905",
         "primary-dark-orange": "#D04B10",
+        "primary-darkish-orange": "#FE8F00",
         "primary-yellow": "#FFC10C",
         "primary-yellow-dark-shade": "#DFB129",
         "smooth-yellow": "#F5EE83",
+        "cream-yellow": "#FFF0CA",
         "green-darker": "#78B241",
         "primary-teal": "#83C5BE",
         "primary-dark-teal": "#3D968C",
         "primary-pink": "#DF9BC9",
         "primary-sky-blue": "#3C93BE",
-        // SECONDARY COLORS
         "secondary-dark-brown": "#392734",
         "secondary-silver": "#392734",
         "button-brown": "#B77D43",
+        "crimson-red": "#C7655D",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
+        },
+        "accordion-up": {
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
