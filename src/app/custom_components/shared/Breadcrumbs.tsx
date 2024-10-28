@@ -30,12 +30,12 @@ const Breadcrumbs = ({
               <Link href="/">Home</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
+          {/* <BreadcrumbSeparator /> */}
+          {/* <BreadcrumbItem>
             <BreadcrumbLink>
               <Link href="/components">{pathname}</Link>
             </BreadcrumbLink>
-          </BreadcrumbItem>
+          </BreadcrumbItem> */}
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbPage>{currentPageName}</BreadcrumbPage>
