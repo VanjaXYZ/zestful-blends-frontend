@@ -12,7 +12,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   );
   return (
     <main className="bg-cream-yellow">
-      <Breadcrumbs />
+      <Breadcrumbs currentPageName={blog?.title} />
       <section className="lg:mt-24 p-4">
         <article className="flex flex-col gap-4 border-b border-black">
           <div className="space-y-4">
