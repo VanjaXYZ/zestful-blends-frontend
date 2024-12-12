@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useComboStore } from "../store/comboStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown,faHeart,faSeedling,faBolt,faShieldVirus } from "@fortawesome/free-solid-svg-icons";
 
 export default function Page() {
   const { combos, selectedCombo, setSelectedCombo } = useComboStore();
@@ -58,6 +58,103 @@ export default function Page() {
           </div>
         ))}
       </div>
+      {/* Pagination */}
+<div className="flex justify-center items-center gap-3 mt-8">
+  {/* Left Arrow */}
+  <button
+    className="flex items-center justify-center w-10 h-10 text-black bg-white rounded-full shadow hover:bg-[#FFCC00] hover:text-white transition"
+    onClick={() => console.log("Go to previous page")} 
+  >
+    ←
+  </button>
+
+  {/* Page Numbers */}
+  <button
+    className="flex items-center justify-center w-10 h-10 bg-[#FFCC00] text-white rounded-full font-semibold"
+    onClick={() => console.log("Go to page 1")} 
+  >
+    1
+  </button>
+  <button
+    className="flex items-center justify-center w-10 h-10 bg-white text-black rounded-full font-semibold hover:bg-[#FFCC00] hover:text-white transition"
+    onClick={() => console.log("Go to page 2")} 
+  >
+    2
+  </button>
+  <button
+    className="flex items-center justify-center w-10 h-10 bg-white text-black rounded-full font-semibold hover:bg-[#FFF64F] hover:text-white transition"
+    onClick={() => console.log("Go to page 3")} 
+  >
+    3
+  </button>
+
+  {/* Right Arrow */}
+  <button
+    className="flex items-center justify-center w-10 h-10 text-black bg-white rounded-full shadow hover:bg-[#FFCC00] hover:text-white transition"
+    onClick={() => console.log("Go to next page")} 
+  >
+    →
+  </button>
+</div>
+
+      <div className=" py-16">
+        <h2 className="text-center text-4xl font-bold text-[#654321] mb-8">
+          The Benefits of Juices from our Shop
+        </h2>
+
+        <div className="grid md:grid-cols-4 gap-8 px-4">
+          {/* Benefit 1 */}
+          <div className=" p-6  text-center">
+            <div className="text-4xl mb-4">
+              {/* Replace with your icon or Image */}
+              <FontAwesomeIcon icon={faHeart} />
+            </div>
+            <h3 className="font-semibold text-xl text-[#654321] mb-2">Digestive Health</h3>
+            <p className="text-sm text-gray-600">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+            </p>
+          </div>
+
+          {/* Benefit 2 */}
+          <div className=" p-6   text-center">
+            <div className="text-4xl mb-4">
+            <FontAwesomeIcon icon={faShieldVirus} />
+            </div>
+            <h3 className="font-semibold text-xl text-[#654321] mb-2">Immune Support</h3>
+            <p className="text-sm text-gray-600">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+            </p>
+          </div>
+
+          {/* Benefit 3 */}
+          <div className=" p-6   text-center">
+            <div className="text-4xl mb-4">
+            <FontAwesomeIcon icon={faBolt} /> 
+            
+            </div>
+            <h3 className="font-semibold text-xl text-[#654321] mb-2">Energy Boost</h3>
+            
+            <p className="text-sm text-gray-600">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+            </p>
+            
+          </div>
+
+          {/* Benefit 4 */}
+          <div className=" p-6   text-center">
+            <div className="text-4xl mb-4">
+            <FontAwesomeIcon icon={faSeedling} />
+            </div>
+            <h3 className="font-semibold text-xl text-[#654321] mb-2">Antioxidant Power</h3>
+            <p className="text-sm text-gray-600">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit.
+            </p>
+          </div>
+        </div>
+
+        
+      </div>
     </div>
+    
   );
 }

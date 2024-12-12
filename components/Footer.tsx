@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faTwitter, faInstagram, faGooglePlus, faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faTwitter, faInstagram,  faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import Image from 'next/image';
+
+
 
 
 export default function Footer() {
@@ -12,7 +14,7 @@ export default function Footer() {
         
     
           <div className="flex items-center mb-4">
-          <img 
+          <Image 
           src="/images/logo.png" 
          alt="Zestful Blends Logo" 
           width={100}
