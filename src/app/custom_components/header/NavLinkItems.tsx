@@ -39,11 +39,16 @@ const navLinks: NavLinkSubpages[] = [
       },
       {
         id: 3.3,
+        href: "/special-offers",
+        text: "Special Offers",
+      },
+      {
+        id: 3.4,
         href: "/blogs",
         text: "Blogs",
       },
       {
-        id: 3.4,
+        id: 3.5,
         href: "/faq",
         text: "FAQ",
       },
