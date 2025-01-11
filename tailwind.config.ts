@@ -79,6 +79,7 @@ const config: Config = {
         "secondary-silver": "#392734",
         "button-brown": "#B77D43",
         "crimson-red": "#C7655D",
+        "smooth-red": "#EB464E",
       },
       keyframes: {
         "accordion-down": {
