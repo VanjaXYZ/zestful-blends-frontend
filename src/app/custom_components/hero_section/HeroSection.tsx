@@ -8,7 +8,7 @@ const HeroSection = () => {
         <HeroContent />
         <HeroImage />
       </div>
-      {/* <HeroJuiceInfo /> */}
+      <HeroJuiceInfo />
     </section>
   );
 };
