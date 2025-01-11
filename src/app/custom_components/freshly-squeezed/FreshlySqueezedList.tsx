@@ -9,6 +9,7 @@ import { LiaGlassMartiniAltSolid } from "react-icons/lia";
 import { MdLocalDrink } from "react-icons/md";
 
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 const items = [
   {
     id: "1",
@@ -52,9 +53,11 @@ const FreshlySqueezedList = () => {
           />
         ))}
       </div>
-      <Button className="bg-primary-dark-teal w-[200px] font-semibold transition-colors hover:bg-white rounded-full text-white hover:text-black">
-        Our Story
-      </Button>
+      <Link href={"/about-us"}>
+        <Button className="bg-primary-dark-teal w-[200px] font-semibold transition-colors hover:bg-white rounded-full text-white hover:text-black">
+          Our Story
+        </Button>
+      </Link>
     </div>
   );
 };
