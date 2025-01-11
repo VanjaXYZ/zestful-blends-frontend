@@ -76,7 +76,7 @@ const NavLinkItems = () => {
           <NavigationMenuItem key={link.id}>
             {link.subpages ? (
               <>
-                <NavigationMenuTrigger className="text-white font-bold p-4">
+                <NavigationMenuTrigger className="text-white font-bold p-4 bg-transparent">
                   {link.text}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="w-full flex flex-col gap-8">
