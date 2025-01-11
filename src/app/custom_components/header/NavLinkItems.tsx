@@ -84,13 +84,13 @@ const NavLinkItems = () => {
                     {link.subpages.map((subpage) => (
                       <NavigationMenuItem
                         key={subpage.id}
-                        className="transition-colors w-[150px] text-start py-2 text-white font-bold hover:underline hover:underline-offset-4"
+                        className="transition-colors w-[150px] text-start p-2 text-white font-bold hover:underline hover:underline-offset-4"
                       >
                         <Link
                           key={subpage.id}
                           href={subpage.href}
                           passHref
-                          className="text-white"
+                          className="text-white font-bold"
                         >
                           {subpage.text}
                         </Link>
