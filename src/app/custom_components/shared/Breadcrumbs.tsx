@@ -26,9 +26,9 @@ const Breadcrumbs = ({
       <Breadcrumb>
         <BreadcrumbList className="text-xl text-center text-white">
           <BreadcrumbItem>
-            {/* <BreadcrumbLink> */}
-            <Link href="/">Home</Link>
-            {/* </BreadcrumbLink> */}
+            <BreadcrumbLink>
+              <Link href="/">Home</Link>
+            </BreadcrumbLink>
           </BreadcrumbItem>
           {/* <BreadcrumbSeparator /> */}
           {/* <BreadcrumbItem>
