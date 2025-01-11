@@ -1,9 +1,11 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image1 from "@/assets/Caribbean Bliss Smoothie-1.png";
 import Image2 from "@/assets/Crimson Apple Zest-1.png";
 import Image3 from "@/assets/mango-juice-splashing.png";
 import Image4 from "@/assets/four-juices.png";
 import DrinkOptionsProduct from "./DrinkOptionsProduct";
+import CustomPagination from "@/app/custom_components/shared/CustomPagination";
 
 const drinks = [
   {
@@ -63,14 +65,31 @@ const drinks = [
 ];
 
 const DrinkOptions = () => {
+  const rowsPerPage = 6;
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(rowsPerPage);
+
+  const paginatedDrinksList = drinks.slice(startIndex, endIndex);
   return (
-    <section className="bg-[#fdd79d] py-16">
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-12">
-        {drinks?.map((drink: any) => (
-          <DrinkOptionsProduct drink={drink} key={drink.id} />
-        ))}
-      </div>
-    </section>
+    <>
+      <section className="bg-[#fdd79d] py-16">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-12">
+          {paginatedDrinksList?.map((drink: any) => (
+            <DrinkOptionsProduct drink={drink} key={drink.id} />
+          ))}
+        </div>
+      </section>
+      <section className="py-4 bg-[#fdd79d]">
+        <CustomPagination
+          rowsPerPage={rowsPerPage}
+          data={drinks}
+          startIndex={startIndex}
+          setStartIndex={setStartIndex}
+          endIndex={endIndex}
+          setEndIndex={setEndIndex}
+        />
+      </section>
+    </>
   );
 };
 
