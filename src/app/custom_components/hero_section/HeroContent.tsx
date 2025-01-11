@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "@/assets/logo-with-outline.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 const HeroContent = () => {
   return (
     <div className="lg:w-1/2 mt-10 lg:mt-20 px-1">
@@ -26,12 +27,14 @@ const HeroContent = () => {
         nec. Pellen.
       </p>
       <div className="max-w-[300px] mx-auto lg:mx-0">
-        <Button
-          className="bg-primary-yellow text-black font-bold hover:bg-primary-yellow-dark-shade "
-          size={"lg"}
-        >
-          Shop Juices
-        </Button>
+        <Link href={"/shop"}>
+          <Button
+            className="bg-primary-yellow text-black font-bold hover:bg-primary-yellow-dark-shade "
+            size={"lg"}
+          >
+            Shop Juices
+          </Button>
+        </Link>
       </div>
     </div>
   );
