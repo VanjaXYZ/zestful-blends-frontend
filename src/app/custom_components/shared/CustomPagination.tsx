@@ -32,7 +32,7 @@ const CustomPagination = ({
             className={
               startIndex === 0
                 ? "pointer-events-none opacity-50"
-                : " text-white font-bold text-xl"
+                : " text-black font-bold text-xl"
             }
             onClick={() => {
               setStartIndex(startIndex - rowsPerPage);
@@ -46,7 +46,7 @@ const CustomPagination = ({
             className={
               endIndex >= data.length
                 ? "pointer-events-none opacity-50"
-                : " text-white font-bold text-xl"
+                : " text-black font-bold text-xl"
             }
             onClick={() => {
               setStartIndex(startIndex + rowsPerPage);
