@@ -6,7 +6,7 @@ import DrinkOptions from "./DrinkOptions";
 
 const ShopList = () => {
   return (
-    <section className="">
+    <section>
       <DrinkList />
       <DrinkOptions />
     </section>

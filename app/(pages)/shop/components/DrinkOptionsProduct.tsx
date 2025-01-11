@@ -9,15 +9,15 @@ interface NewProductVisualProps {
 
 const DrinkOptionsProduct = ({ drink }: { drink: NewProductVisualProps }) => {
   return (
-    <div className="flex justify-center flex-col items-center">
+    <div className="relative">
       <Image
         src={drink.imageSrc}
         width={300}
         height={300}
         alt="Product Image"
-        className="rounded-full"
+        className="rounded-full m-auto"
       />
-      <h2 className="pt-12 font-bold">{drink.productName}</h2>
+      <h2 className="pt-12 text-center font-bold">{drink.productName}</h2>
     </div>
   );
 };
