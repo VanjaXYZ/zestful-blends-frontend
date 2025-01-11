@@ -4,6 +4,8 @@ import ContactForm from "./components/ContactForm";
 import ContactInfoText from "./components/ContactInfoText";
 import ContactOpeningHoursInfo from "./components/ContactOpeningHoursInfo";
 import ContactMoreInfo from "./components/ContactMoreInfo";
+import ContactMap from "./components/ContactMap";
+import ContactMessage from "./components/ContactMessage";
 
 const page = () => {
   return (
@@ -15,6 +17,8 @@ const page = () => {
         <ContactOpeningHoursInfo />
         <ContactMoreInfo />
       </section>
+      <ContactMap />
+      <ContactMessage />
     </main>
   );
 };
