@@ -12,6 +12,7 @@ import {
 
 import DATA from "./../DUMMY-TEXT.json";
 import BlogItem from "./BlogItem";
+import CustomPagination from "@/app/custom_components/shared/CustomPagination";
 
 export type BlogProps = {
   id: number;
@@ -39,38 +40,14 @@ const BlogList = () => {
         ))}
       </section>
       <section className="py-4">
-        <Pagination className="flex justify-center">
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                href="#"
-                className={
-                  startIndex === 0
-                    ? "pointer-events-none opacity-50"
-                    : " text-white font-bold text-xl"
-                }
-                onClick={() => {
-                  setStartIndex(startIndex - rowsPerPage);
-                  setEndIndex(endIndex - rowsPerPage);
-                }}
-              />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext
-                href="#"
-                className={
-                  endIndex >= blogData.length
-                    ? "pointer-events-none opacity-50"
-                    : " text-white font-bold text-xl"
-                }
-                onClick={() => {
-                  setStartIndex(startIndex + rowsPerPage);
-                  setEndIndex(endIndex + rowsPerPage);
-                }}
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
+        <CustomPagination
+          rowsPerPage={rowsPerPage}
+          data={blogData}
+          startIndex={startIndex}
+          setStartIndex={setStartIndex}
+          endIndex={endIndex}
+          setEndIndex={setEndIndex}
+        />
       </section>
     </>
   );
