@@ -75,6 +75,7 @@ const config: Config = {
         "primary-dark-teal": "#3D968C",
         "primary-pink": "#DF9BC9",
         "primary-sky-blue": "#3C93BE",
+        "primary-smooth-blue": "#75AEE2",
         "secondary-dark-brown": "#392734",
         "secondary-silver": "#392734",
         "button-brown": "#B77D43",
