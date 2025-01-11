@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface NewProductVisualProps {
   id: string;
@@ -9,16 +11,16 @@ interface NewProductVisualProps {
 
 const DrinkOptionsProduct = ({ drink }: { drink: NewProductVisualProps }) => {
   return (
-    <div className="relative">
+    <motion.div whileHover={{ scale: 1.1 }} className="cursor-pointer">
       <Image
         src={drink.imageSrc}
         width={300}
         height={300}
         alt="Product Image"
-        className="rounded-full m-auto"
+        className="rounded-full m-auto overflow-hidden"
       />
       <h2 className="pt-12 text-center font-bold">{drink.productName}</h2>
-    </div>
+    </motion.div>
   );
 };
 
