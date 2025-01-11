@@ -19,7 +19,12 @@ const DrinkOptionsProduct = ({ drink }: { drink: NewProductVisualProps }) => {
         alt="Product Image"
         className="rounded-full m-auto overflow-hidden"
       />
-      <h2 className="pt-12 text-center font-bold">{drink.productName}</h2>
+      <h2 className="pt-12 text-center font-bold">
+        {drink.productName}{" "}
+        {drink.isNewProduct && (
+          <span className="text-pink-500 ms-2 tracking-widest">NEW</span>
+        )}
+      </h2>
     </motion.div>
   );
 };
