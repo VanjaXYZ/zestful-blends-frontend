@@ -7,10 +7,8 @@ import DrinkOptions from "./DrinkOptions";
 const ShopList = () => {
   return (
     <section className="">
-      <div>
-        <DrinkList />
-        <DrinkOptions />
-      </div>
+      <DrinkList />
+      <DrinkOptions />
     </section>
   );
 };
