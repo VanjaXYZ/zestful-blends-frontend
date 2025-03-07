@@ -8,7 +8,7 @@ import SaladBowlsImg from "@/assets/salad_bowls.png"
 import CherryBoxImg from '@/assets/cherry_box.png'
 import ThreeJuicesImg from "@/assets/three_juices.png";
 import MelonCitrusImg from '@/assets/melon_citrus_cooler_1.png'
-import ApplesImg from '@/assets/apples_2.png'
+import TwoJuices from '@/assets/two_juices.png'
 
 const page = () => {
   return (
@@ -19,17 +19,17 @@ const page = () => {
           <ImageCell src={FourJuicesImg} alt="Four colorful glasses of fruit juice" />
           <ImageCell src={JuiceSplashImg} alt="Juice splashing in a glass" />
           <ImageCell src={MelonCitrusImg} alt="Melon citrus juice" />
-          <ImageCell src={ApplesImg} alt="Boxes of Apples" />
+          <ImageCell src={CitrusBowlImg} alt="Citrus & honeydew melody" />
 
-          <div className="col-span-1 row-span-1 bg-teal-500 flex flex-col items-center justify-center text-center p-4">
-            <button className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-2 px-8 rounded-lg mb-2">
+          <div className="col-span-1 row-span-1 bg-[#52b69a] flex flex-col items-center justify-center text-center p-1 sm:p-3">
+            <button className="w-11/12 sm:w-4/5 bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-2 sm:py-5 px-2 sm:px-0 text-sm sm:text-lg md:text-xl lg:text-2xl rounded-xl mb-2">
               Order Now
             </button>
-            <p className="text-white text-sm">Get The Flavor You Enjoy!</p>
+            <p className="text-white mx-1 sm:mx-3 text-xs sm:text-base">Get The Flavor You Enjoy!</p>
           </div>
 
+          <ImageCell src={TwoJuices} alt="Two glasses of juice" />
           <ImageCell src={SaladBowlsImg} alt="Bowls of salad" />
-          <ImageCell src={CitrusBowlImg} alt="Citrus & honeydew melody" />
           <ImageCell src={ThreeJuicesImg} alt="Three colorful glasses of fruit juice" />
           <ImageCell src={CherryBoxImg} alt="Box of cherries" />
         </div>
