@@ -14,15 +14,15 @@ const page = () => {
   return (
     <main>
       <Breadcrumbs currentPageName="Gallery" />
-      <section className="lg:mt-24 lg:p-24 bg-[#b5e58c]">
+      <section className="lg:mt-24 lg:p-24 bg-primary-olive">
         <div className="grid grid-cols-3 grid-rows-3 max-w-6xl mx-auto">
           <ImageCell src={FourJuicesImg} alt="Four colorful glasses of fruit juice" />
           <ImageCell src={JuiceSplashImg} alt="Juice splashing in a glass" />
           <ImageCell src={MelonCitrusImg} alt="Melon citrus juice" />
           <ImageCell src={CitrusBowlImg} alt="Citrus & honeydew melody" />
 
-          <div className="col-span-1 row-span-1 bg-[#52b69a] flex flex-col items-center justify-center text-center p-1 sm:p-3">
-            <button className="w-11/12 sm:w-4/5 bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-2 sm:py-5 px-2 sm:px-0 text-sm sm:text-lg md:text-xl lg:text-2xl rounded-xl mb-2">
+          <div className="col-span-1 row-span-1 bg-primary-green flex flex-col items-center justify-center text-center p-1 sm:p-3">
+            <button className="w-11/12 sm:w-4/5 bg-primary-yellow hover:bg-primary-yellow-dark-shade text-black font-bold py-2 sm:py-5 px-2 sm:px-0 text-sm sm:text-lg md:text-xl lg:text-2xl rounded-xl mb-2">
               Order Now
             </button>
             <p className="text-white mx-1 sm:mx-3 text-xs sm:text-base">Get The Flavor You Enjoy!</p>
