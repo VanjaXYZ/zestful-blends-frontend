@@ -37,7 +37,7 @@ const FooterList = () => {
         <ul className="space-y-1 md:space-y-2 py-4 w-full">
           {contactList.map((contact: LinkItem, index: number) => (
             <li key={index} className="text-white w-full">
-              <a href={contact.link} className="hover:text-green-300 transition-colors">
+              <a href={contact.link} className="hover:text-primary-olive transition-colors">
                 {contact.text}
               </a>
             </li>
@@ -49,7 +49,7 @@ const FooterList = () => {
         <ul className="space-y-1 py-4 md:space-y-2">
           {shopList.map((shop: LinkItem, index: number) => (
             <li key={index} className="text-white">
-              <a href={shop.link} className="hover:text-green-300 transition-colors">
+              <a href={shop.link} className="hover:text-primary-olive transition-colors">
                 {shop.text}
               </a>
             </li>
@@ -63,7 +63,7 @@ const FooterList = () => {
         <ul className="space-y-1 py-4 md:space-y-2">
           {servicesList.map((service: LinkItem, index: number) => (
             <li key={index} className="text-white">
-              <a href={service.link} className="hover:text-green-300 transition-colors">
+              <a href={service.link} className="hover:text-primary-olive transition-colors">
                 {service.text}
               </a>
             </li>
