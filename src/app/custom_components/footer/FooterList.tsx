@@ -1,25 +1,32 @@
 import React from "react";
 
-const contactList = [
-  "#130 - 139 Keefer St.",
-  "Vancouver, BC V6A 1X3",
-  "Call Us +16047046240",
-  "info@zestfulblends.com",
+interface LinkItem {
+  text: string;
+  link: string;
+}
+
+const contactList: LinkItem[] = [
+  { text: "#130 - 139 Keefer St.", link: "https://maps.google.com/?q=130-139+Keefer+St+Vancouver+BC+V6A+1X3" },
+  { text: "Vancouver, BC V6A 1X3", link: "https://maps.google.com/?q=130-139+Keefer+St+Vancouver+BC+V6A+1X3" },
+  { text: "Call Us +16047046240", link: "tel:+16047046240" },
+  { text: "info@zestfulblends.com", link: "mailto:info@zestfulblends.com" },
 ];
-const shopList = [
-  "Juices",
-  "Supplements",
-  "Pantry",
-  "Milkshakes",
-  "Health Drinks",
+
+const shopList: LinkItem[] = [
+  { text: "Juices", link: "/shop/juices" },
+  { text: "Supplements", link: "/shop/supplements" },
+  { text: "Pantry", link: "/shop/pantry" },
+  { text: "Milkshakes", link: "/shop/milkshakes" },
+  { text: "Health Drinks", link: "/shop/health-drinks" },
 ];
-const servicesList = [
-  "Orders",
-  "Addresses",
-  "Account",
-  "Details",
-  "24/7 Calls",
-  "Blogs & News",
+
+const servicesList: LinkItem[] = [
+  { text: "Orders", link: "/account/orders" },
+  { text: "Addresses", link: "/account/addresses" },
+  { text: "Account", link: "/account" },
+  { text: "Details", link: "/account/details" },
+  { text: "24/7 Calls", link: "/contact" },
+  { text: "Blogs & News", link: "/blogs" },
 ];
 
 const FooterList = () => {
@@ -28,9 +35,11 @@ const FooterList = () => {
       <div className="w-full">
         <h3 className="text-white font-extrabold text-xl uppercase">Contact</h3>
         <ul className="space-y-1 md:space-y-2 py-4 w-full">
-          {contactList.map((contact: string, index: number) => (
+          {contactList.map((contact: LinkItem, index: number) => (
             <li key={index} className="text-white w-full">
-              {contact}
+              <a href={contact.link} className="hover:text-primary-olive transition-colors">
+                {contact.text}
+              </a>
             </li>
           ))}
         </ul>
@@ -38,9 +47,11 @@ const FooterList = () => {
       <div className="w-full">
         <h3 className="text-white font-extrabold text-xl uppercase">Shop</h3>
         <ul className="space-y-1 py-4 md:space-y-2">
-          {shopList.map((shop: string, index: number) => (
+          {shopList.map((shop: LinkItem, index: number) => (
             <li key={index} className="text-white">
-              {shop}
+              <a href={shop.link} className="hover:text-primary-olive transition-colors">
+                {shop.text}
+              </a>
             </li>
           ))}
         </ul>
@@ -50,9 +61,11 @@ const FooterList = () => {
           Services
         </h3>
         <ul className="space-y-1 py-4 md:space-y-2">
-          {servicesList.map((service: string, index: number) => (
+          {servicesList.map((service: LinkItem, index: number) => (
             <li key={index} className="text-white">
-              {service}
+              <a href={service.link} className="hover:text-primary-olive transition-colors">
+                {service.text}
+              </a>
             </li>
           ))}
         </ul>
