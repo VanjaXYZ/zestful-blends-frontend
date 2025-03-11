@@ -25,8 +25,8 @@ const servicesList: LinkItem[] = [
   { text: "Addresses", link: "/account/addresses" },
   { text: "Account", link: "/account" },
   { text: "Details", link: "/account/details" },
-  { text: "24/7 Calls", link: "/support/contact" },
-  { text: "Blogs & News", link: "/blog" },
+  { text: "24/7 Calls", link: "/contact" },
+  { text: "Blogs & News", link: "/blogs" },
 ];
 
 const FooterList = () => {
