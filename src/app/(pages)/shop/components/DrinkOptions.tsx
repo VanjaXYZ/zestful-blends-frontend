@@ -9,55 +9,57 @@ import CustomPagination from "@/app/custom_components/shared/CustomPagination";
 
 const drinks = [
   {
-    id: "1",
+    // IDs are like this for testing with backend (may need to be changed if database reseeded)
+    // Testing should be made more maintainable in the future
+    id: "67e1267744626ecf251c9290", 
     imageSrc: Image1,
     productName: "Strawberry Juice",
     isNewProduct: true,
   },
   {
-    id: "2",
+    id: "67e1267744626ecf251c9291",
     imageSrc: Image2,
     productName: "Tomato Juice",
     isNewProduct: false,
   },
   {
-    id: "3",
+    id: "67e1267744626ecf251c9292",
     imageSrc: Image3,
     productName: "Mango Juice",
     isNewProduct: false,
   },
   {
-    id: "4",
+    id: "67e1267744626ecf251c9293",
     imageSrc: Image4,
     productName: "Pomegranate Juice",
     isNewProduct: true,
   },
   {
-    id: "5",
+    id: "67e1267744626ecf251c9294",
     imageSrc: Image1,
     productName: "Bubble Milk Tea",
     isNewProduct: true,
   },
   {
-    id: "6",
+    id: "67e1267744626ecf251c9295",
     imageSrc: Image2,
     productName: "Kiwi Juice",
     isNewProduct: false,
   },
   {
-    id: "7",
+    id: "67e1267744626ecf251c9293",
     imageSrc: Image3,
     productName: "Pomegranate Juice",
     isNewProduct: false,
   },
   {
-    id: "8",
+    id: "67e1267744626ecf251c9294",
     imageSrc: Image4,
     productName: "Bubble Milk Tea",
     isNewProduct: false,
   },
   {
-    id: "9",
+    id: "67e1267744626ecf251c9295",
     imageSrc: Image1,
     productName: "Kiwi Juice",
     isNewProduct: false,
