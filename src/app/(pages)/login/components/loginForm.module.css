@@ -1,0 +1,22 @@
+.input-container {
+    position: relative;
+    margin-top: 16px; /* Adjust as necessary */
+  }
+  
+  .input-container input {
+    border: 2px dashed orange;
+    border-radius: 8px;
+    padding: 10px; /* Adjust padding as needed */
+    width: 100%; /* Make the input take the full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  .input-container label {
+    position: absolute;
+    top: -10px;    /* Position above the input */
+    left: 10px;    /* Position on the left side */
+    font-size: 12px; /* Smaller font size */
+    color: gray;    /* Placeholder color */
+    background: white; /* Background to overlap input */
+    padding: 0 4px; /* Small padding around the label */
+  }
