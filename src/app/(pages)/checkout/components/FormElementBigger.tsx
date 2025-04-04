@@ -7,22 +7,17 @@ import { Form,
   FormMessage,
   FormField, } from "@/components/ui/form"
   import { Input } from "@/components/ui/input";
-  import { useForm } from "react-hook-form";
-  import { Control } from "react-hook-form";
+  import { useFormContext } from "react-hook-form";
 
-interface FormElementProps {
-  formElementName?: string;
-  control: Control<any>;
+interface FormElementBiggerProps {
   name: string;
+  fieldWidth: number;
 }
 
-const FormElement = ({formElementName, control, name}: FormElementProps) => {
-  const form = useForm();
+const FormElementBigger = ({name, fieldWidth}: FormElementBiggerProps) => {
+  const {control} = useFormContext();
   return (
     <div className='flex items-center gap-2'>
-      <div className="text-[#FCB131]">
-        {formElementName}
-      </div>
       <FormField
         control={control}
         name={name}
@@ -32,7 +27,8 @@ const FormElement = ({formElementName, control, name}: FormElementProps) => {
               <Input
                 // placeholder="..."
                 {...field}
-                className="w-48 h-6 bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full"
+                className={`h-10 bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full`}
+                style={{width: `${fieldWidth}rem`}}
               />
             </FormControl>
 
@@ -44,4 +40,4 @@ const FormElement = ({formElementName, control, name}: FormElementProps) => {
   )
 }
 
-export default FormElement
+export default FormElementBigger
