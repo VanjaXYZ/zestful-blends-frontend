@@ -2,6 +2,7 @@ import React from 'react'
 import Breadcrumbs from "@/app/custom_components/shared/Breadcrumbs";
 import ContactInfo from './components/ContactInfo';
 import PaymentMethod from './components/PaymentMethod';
+import MyOrderReview from './components/MyOrderReview';
 
 const page = () => {
   return (
@@ -16,7 +17,7 @@ const page = () => {
           <PaymentMethod/>
         </div>
         <div className='w-[40%] flex justify-center'>
-          <p>abc</p>
+          <MyOrderReview/>
         </div>
       </div>
     </main>
