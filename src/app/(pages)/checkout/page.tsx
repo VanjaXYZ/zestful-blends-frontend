@@ -8,8 +8,8 @@ const page = () => {
   return (
     <main className='bg-[#FBEEAC] min-h-screen'>
       <Breadcrumbs currentPageName="Check Out!"/> {/*header to edit- TODO*/}
-      <div className="flex justify-center mt-4 mb-32 p-32">
-        <div className='w-[60%] flex flex-col justify-center items-center'>
+      <div className="flex mt-4 mb-32 p-32">
+        <div className='w-[60%] flex flex-col items-star'>
           <div className='w-[80%]'>
             <h1 className="text-[#ED7905] font-bold text-5xl pt-32 pb-16">Ready To Refresh Yourself?</h1>
           </div>

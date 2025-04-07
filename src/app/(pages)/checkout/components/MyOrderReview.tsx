@@ -1,10 +1,22 @@
+"use client"
+
 import React from 'react'
 import WalkingMenIcon from '@/assets/WalkingMenIcon.png'
 import ClockIcon from '@/assets/ClockIcon.png'
 import HomeIcon from '@/assets/HomeIcon.png'
 import EditIcon from '@/assets/EditIcon.png'
+import FormElementBigger from './FormElementBigger'
+import { FormProvider, useForm } from 'react-hook-form'
 
 const MyOrderReview = () => {
+
+  const form = useForm();
+
+  const tips: string[]=['10%', '12%', '15%', 'customer'];
+
+  const discount = 3;
+  const tip = 3;
+  const tax = 3;
 
   interface orderedProduct {
     name: string,
@@ -37,7 +49,7 @@ const MyOrderReview = () => {
   return (
     <div className='w-[80%] bg-white border border-gray-300 rounded-xl mt-8' style={{boxShadow: "inset 0px 1px 2.5px rgba(0, 0, 0, 0.15)" }}>
       <div className="m-4">
-        <h2 className='text-[#FCB131] font-bold text-2xl pb-4'>My order review</h2>
+        <h2 className='text-[#FCB131] font-bold text-3xl pb-4'>My order review</h2>
 
         <div className="border-2 border-[#FCB131] rounded-3xl flex flex-col px-8 py-4 gap-2">
           <div className='flex items-center gap-2'>
@@ -61,7 +73,7 @@ const MyOrderReview = () => {
 
         <div className='border-2 border-[#FCB131] border-dashed rounded-3xl mt-4 p-8 flex flex-col'>
           {orderedProducts.map((orderedProduct) => {
-            return <div className="flex flex-col border-b border-b-gray-400 text-center mb-8">
+            return <div className="flex flex-col border-b border-b-gray-300 text-center mb-8">
               <p className="font-bold">{orderedProduct.name}</p>
               {orderedProduct.details.map((detail) => {
                 return <p>{detail}</p>
@@ -73,6 +85,55 @@ const MyOrderReview = () => {
             <p className="font-bold">Sub Total:</p>
             <p>${subTotal}</p>
           </div>
+        </div>
+
+        <div className='mt-6 border-b border-t border-b-gray-300 border-t-gray-300'>
+          <div className='flex flex-col gap-4 px-6 py-4'>
+            <h2 className='text-[#FCB131] font-bold text-2xl'>Promo code</h2>
+            <FormProvider {...form}>
+              <FormElementBigger name="promo code" fieldWidth={28}/>
+            </FormProvider>
+          </div>
+        </div>
+
+        <div className='flex flex-col gap-4 border-b border-b-gray-300 px-6 py-4'>
+          <h2 className='text-[#FCB131] font-bold text-2xl'>Tip?</h2>
+          <div className='flex gap-2'>
+            {tips.map((tip) => 
+              <div className='h-16 bg-[#FBEEAC] flex items-center justify-center border-2 border-[#FCB131] rounded-3xl'
+                   style={{width: 'calc((100% - 3*0.5rem)/4)'}}>
+                {tip}
+              </div>
+            )}
+          </div>
+          <p className='ml-auto'>Skip tips</p>
+        </div>
+
+        <div className='flex flex-col gap-2 px-6 py-4'>
+          <div className='flex justify-between'>
+            <h3>Sub total: </h3>
+            <p>$ {subTotal}</p>
+          </div>
+          <div className='flex justify-between'>
+            <h3>Discount: </h3>
+            <p>-$ {discount.toFixed(2)}</p>
+          </div>
+          <div className='flex justify-between'>
+            <h3>Tip: </h3>
+            <p>$ {tip.toFixed(2)}</p>
+          </div>
+          <div className='flex justify-between'>
+            <h3>Tax: </h3>
+            <p>$ {tax.toFixed(2)}</p>
+          </div>
+          <div className='flex justify-between'>
+            <h3 className='font-bold text-2xl'>Grand Total</h3>
+            <p className='font-bold text-2xl'>$ {(subTotal-discount+tip+tax).toFixed(2)}</p>
+          </div>
+        </div>
+
+        <div className='px-6 py-8'>
+          <button className='bg-[#F8991D] text-white font-bold text-2xl w-full rounded-full py-4'>Place order</button>
         </div>
       </div>
     </div>
