@@ -19,6 +19,7 @@ const MyOrderReview = () => {
   const tax = 3;
 
   interface orderedProduct {
+    id: number,
     name: string,
     details: string[],
     price: number
@@ -26,18 +27,21 @@ const MyOrderReview = () => {
 
   const orderedProducts: orderedProduct[] = [
     {
+      id: 1,
       name: "17'' berry pizza",
       details: ['NO blueberry', 'Extra raspberry'],
       price: 20.23
     },
 
     {
+      id: 2,
       name: "Super Amazing Juice",
       details: [],
       price: 8.80
     },
 
     {
+      id: 3,
       name: "Super Amazing Smooth",
       details: [],
       price: 9.90
@@ -73,10 +77,10 @@ const MyOrderReview = () => {
 
         <div className='border-2 border-[#FCB131] border-dashed rounded-3xl mt-4 p-8 flex flex-col'>
           {orderedProducts.map((orderedProduct) => {
-            return <div className="flex flex-col border-b border-b-gray-300 text-center mb-8">
+            return <div key={orderedProduct.id} className="flex flex-col border-b border-b-gray-300 text-center mb-8">
               <p className="font-bold">{orderedProduct.name}</p>
-              {orderedProduct.details.map((detail) => {
-                return <p>{detail}</p>
+              {orderedProduct.details.map((detail, index) => {
+                return <p key={index}>{detail}</p>
               })}
               <p className="ml-auto">${orderedProduct.price}</p>
             </div>
@@ -99,8 +103,9 @@ const MyOrderReview = () => {
         <div className='flex flex-col gap-4 border-b border-b-gray-300 px-6 py-4'>
           <h2 className='text-[#FCB131] font-bold text-2xl'>Tip?</h2>
           <div className='flex gap-2'>
-            {tips.map((tip) => 
-              <div className='h-16 bg-[#FBEEAC] flex items-center justify-center border-2 border-[#FCB131] rounded-3xl'
+            {tips.map((tip, index) => 
+              <div key={index}
+                   className='h-16 bg-[#FBEEAC] flex items-center justify-center border-2 border-[#FCB131] rounded-3xl'
                    style={{width: 'calc((100% - 3*0.5rem)/4)'}}>
                 {tip}
               </div>
