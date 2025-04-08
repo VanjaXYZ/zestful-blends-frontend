@@ -79,8 +79,8 @@ const MyOrderReview = () => {
           {orderedProducts.map((orderedProduct) => {
             return <div key={orderedProduct.id} className="flex flex-col border-b border-b-gray-300 text-center mb-8">
               <p className="font-bold">{orderedProduct.name}</p>
-              {orderedProduct.details.map((detail, index) => {
-                return <p key={index}>{detail}</p>
+              {orderedProduct.details.map((detail) => {
+                return <p key={`${orderedProduct.id}-${detail}`}>{detail}</p>
               })}
               <p className="ml-auto">${orderedProduct.price}</p>
             </div>
@@ -103,8 +103,8 @@ const MyOrderReview = () => {
         <div className='flex flex-col gap-4 border-b border-b-gray-300 px-6 py-4'>
           <h2 className='text-[#FCB131] font-bold text-2xl'>Tip?</h2>
           <div className='flex gap-2'>
-            {tips.map((tip, index) => 
-              <div key={index}
+            {tips.map((tip) => 
+              <div key={tip}
                    className='h-16 bg-[#FBEEAC] flex items-center justify-center border-2 border-[#FCB131] rounded-3xl'
                    style={{width: 'calc((100% - 3*0.5rem)/4)'}}>
                 {tip}
