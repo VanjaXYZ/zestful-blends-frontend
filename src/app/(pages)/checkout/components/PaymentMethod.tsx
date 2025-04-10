@@ -4,6 +4,9 @@ import React from 'react'
 import { Form } from 'react-hook-form'
 import { FormProvider, useForm } from "react-hook-form";
 import FormElementBigger from './FormElementBigger';
+import CheckboxFormElementBigger from './CheckboxFormElementBigger';
+import MonthDropdown from './MonthDropdown';
+import YearDropdown from './YearDropdown';
 
 const PaymentMethod = () => {
 
@@ -42,17 +45,18 @@ const PaymentMethod = () => {
       
         <h3 className='font-bold pt-12 pb-6'>Payment Method:</h3>
         <div className='flex flex-col gap-4'>
-          <FormElementBigger name="payment method" fieldWidth={2*fieldWidth1 + gap1} />
+          <CheckboxFormElementBigger name="payment method" fieldWidth={2*fieldWidth1 + gap1} />
           <div>
             <h4>Card Number</h4>
             <FormElementBigger name="card number" fieldWidth={2*fieldWidth1 + gap1} />
           </div>
-          <div className='flex' style={{gap: `${gap1}rem`}}>
+
+          <div className='flex items-center' style={{gap: `${gap1}rem`}}>
             <div className='flex flex-col'>
               <h4>Expiration date</h4>
-              <div className='flex' style={{gap: `${gap2}rem`}}>
-                <FormElementBigger name="expiration date" fieldWidth={0.6*(fieldWidth1 - gap2)} />
-                <FormElementBigger name="year" fieldWidth={0.4*(fieldWidth1 - gap2)} />
+              <div className='flex justify-center items-center' style={{gap: `${gap2}rem`}}>
+                <MonthDropdown name="month" fieldWidth={0.6*(fieldWidth1 - gap2)} />
+                <YearDropdown name="year" fieldWidth={0.4*(fieldWidth1 - gap2)} />
               </div>
             </div>
             <div className='flex flex-col'>

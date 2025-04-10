@@ -17,7 +17,7 @@ interface FormElementBiggerProps {
 const FormElementBigger = ({name, fieldWidth}: FormElementBiggerProps) => {
   const {control} = useFormContext();
   return (
-    <div className='flex items-center gap-2'>
+    <div className='flex items-center'>
       <FormField
         control={control}
         name={name}
