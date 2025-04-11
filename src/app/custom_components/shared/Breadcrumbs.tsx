@@ -17,6 +17,7 @@ const Breadcrumbs = ({
   pathname?: string;
   currentPageName?: string;
   bgColor?: string;
+
 }) => {
   return (
     <section
