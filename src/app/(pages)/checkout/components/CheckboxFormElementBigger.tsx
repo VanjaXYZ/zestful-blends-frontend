@@ -30,11 +30,11 @@ const CheckboxFormElementBigger = ({name, fieldWidth}: CheckboxFormElementBigger
         control={control}
         name={name}
         render={({ field }) => (
-          <FormItem>
+          <FormItem className='w-full'>
             <FormControl>
               <Label className={`flex items-center justify-between h-10 bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full px-4`}
-                     style={{width: `${fieldWidth}rem`}}>
-                <div className='flex gap-2'>
+                     style={{width: `${fieldWidth}%`}}>
+                <div className='flex gap-2 items-center'>
                   <input
                     type="checkbox"
                     checked={checked}
@@ -57,7 +57,7 @@ const CheckboxFormElementBigger = ({name, fieldWidth}: CheckboxFormElementBigger
                                 checked:after:rounded-full 
                                 checked:after:bg-black`}
                   />
-                  <p className='text-base'>Credit Card</p>
+                  <p className='text-base leading-none'>Credit Card</p>
                 </div>
                 
                 <img alt="card image" src={CardImage.src}/>

@@ -6,21 +6,25 @@ import MyOrderReview from './components/MyOrderReview';
 import styles from './Checkout.module.css'
 
 const page = () => {
+
+  // <section className={`absolute bg-[#ED7905] w-full justify-center top-[145px] h-36 max-sm:flex max-sm:h-20 z-[100] flex-col items-center gap-4 hidden sm:flex`}></section>
+
   return (
     <main>
-      <Breadcrumbs currentPageName="Check Out!" bgColor="bg-[#ED7905]" />
-      <div className={`w-full h-48 ${styles.waveOrange}`}>
-        <div className='w-full h-full bg-[#ED7905]'></div>
-      </div>
-      <div className={`flex px-32 pt-8 pb-32 bg-[#FBEEAC] ${styles.bottomWave}`}>
-        <div className='w-[60%] flex flex-col items-star'>
-          <div className='w-[80%]'>
-            <h1 className="text-[#ED7905] font-bold text-5xl pt-32 pb-16">Ready To Refresh Yourself?</h1>
+      <section className={`absolute bg-[#ED7905] w-full justify-center top-[145px] h-36 max-lg:h-16 z-[100] flex flex-col items-center gap-4`}>
+        <h2 className="text-4xl text-white font-bold">Check Out!</h2>
+      </section>
+      {/* <Breadcrumbs currentPageName="Check Out!" bgColor="bg-[#ED7905]"/> */}
+      <div className={`w-full absolute h-32 max-sm:h-32  ${styles.waveOrange} z-150 bg-[#ED7905]`}></div>
+      <div className={`flex max-sm:flex-col max-sm:px-8 px-[5%] pt-8 pb-32 bg-[#FBEEAC] ${styles.bottomWave}></div> `}>
+        <div className='w-[55%] max-sm:w-full flex flex-col items-start'>
+          <div className='w-[80%] max-sm:w-full'>
+            <h1 className="text-[#ED7905] font-bold text-5xl pt-32 max-sm:pt-4 pb-16">Ready To Refresh Yourself?</h1>
           </div>
           <ContactInfo/>
           <PaymentMethod/>
         </div>
-        <div className='w-[40%] flex justify-center'>
+        <div className='w-[45%] max-sm:w-full flex justify-center'>
           <MyOrderReview/>
         </div>
       </div>

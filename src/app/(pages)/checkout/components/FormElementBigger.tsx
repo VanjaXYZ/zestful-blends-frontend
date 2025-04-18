@@ -17,18 +17,18 @@ interface FormElementBiggerProps {
 const FormElementBigger = ({name, fieldWidth}: FormElementBiggerProps) => {
   const {control} = useFormContext();
   return (
-    <div className='flex items-center'>
+    <div className='flex items-center w-[100%]'>
       <FormField
         control={control}
         name={name}
         render={({ field }) => (
-          <FormItem>
+          <FormItem className='w-full'>
             <FormControl>
               <Input
                 // placeholder="..."
                 {...field}
                 className={`h-10 bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full`}
-                style={{width: `${fieldWidth}rem`}}
+                style={{width: `${fieldWidth}%`}}
               />
             </FormControl>
 

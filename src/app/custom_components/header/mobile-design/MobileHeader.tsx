@@ -1,12 +1,21 @@
+"use client"
+
 import React from "react";
 import MobileNavigationMenu from "./MobileNavigationMenu";
 import MobileLogoImage from "./MobileLogoImage";
 import NavIcons from "../NavIcons";
 import NavOrderButton from "../NavOrderButton";
 
+import { usePathname } from "next/navigation";
+
 const MobileHeader = () => {
+
+  const pathname = usePathname();
+  const isCheckout = pathname === '/checkout'
+
+  const navBgColor = isCheckout ? 'bg-[#ED7905]' : 'bg-primary-sky-blue';
   return (
-    <header className="lg:hidden bg-primary-sky-blue p-6 flex w-full">
+    <header className={`lg:hidden ${navBgColor} p-6 flex w-full`}>
       <MobileLogoImage />
       <div className="flex gap-8 items-center flex-col">
         <NavIcons />
