@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Breadcrumbs from "@/app/custom_components/shared/Breadcrumbs";
 import ContactInfo from './components/ContactInfo';
@@ -36,3 +37,14 @@ const page = () => {
 }
 
 export default page
+=======
+import CheckoutListPage from "./components/checkout";
+
+export default function checklist() {
+  return (
+    <div>
+      <CheckoutListPage />
+    </div>
+  );
+}
+
