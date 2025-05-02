@@ -77,7 +77,7 @@ const page = () => {
             <Button className="sm:w-4/5 bg-primary-yellow hover:bg-primary-yellow-dark-shade text-white font-bold py-2   text-sm  rounded-xl mb-2">
               Delivery
             </Button>
-            <Button className="sm:w-4/5 bg-[#D6CCCCB8] hover:bg-primary-yellow-dark-shade text-black font-bold py-2   text-sm  rounded-xl mb-2">
+            <Button className="sm:w-4/5 bg-[#D6CCCCB8] hover:bg-[#b5b5b5] text-black font-bold py-2 text-sm rounded-xl mb-2">
               Learn More
             </Button>
           </div>
