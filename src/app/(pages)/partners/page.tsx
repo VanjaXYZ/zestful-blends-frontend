@@ -104,7 +104,8 @@ const page = () => {
         <div className="flex text-[#2D4E75] justify-around">
           Partner with us to deliver premium juices with higher margins and
           hassle-free operations. Our loyal customers order frequently and tip
-          well, ensuring steady demand for your drivers. Let's grow together.
+          well, ensuring steady demand for your drivers. Let&apos;s grow
+          together.
         </div>
 
         <InfoAndImage
