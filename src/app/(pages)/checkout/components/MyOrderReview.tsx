@@ -7,6 +7,7 @@ import HomeIcon from '@/assets/HomeIcon.png'
 import EditIcon from '@/assets/EditIcon.png'
 import FormElementBigger from './FormElementBigger'
 import { FormProvider, useForm } from 'react-hook-form'
+import { checkoutList } from './checkout'
 
 const MyOrderReview = () => {
 
@@ -18,37 +19,7 @@ const MyOrderReview = () => {
   const tip = 3;
   const tax = 3;
 
-  interface orderedProduct {
-    id: number,
-    name: string,
-    details: string[],
-    price: number
-  }
-
-  const orderedProducts: orderedProduct[] = [
-    {
-      id: 1,
-      name: "17'' berry pizza",
-      details: ['NO blueberry', 'Extra raspberry'],
-      price: 20.23
-    },
-
-    {
-      id: 2,
-      name: "Super Amazing Juice",
-      details: [],
-      price: 8.80
-    },
-
-    {
-      id: 3,
-      name: "Super Amazing Smooth",
-      details: [],
-      price: 9.90
-    },
-  ]
-
-  const subTotal: number = orderedProducts.reduce((acc, product) => acc + product.price, 0);
+  const subTotal: number = checkoutList.reduce((acc, product) => acc + product.price, 0);
 
   return (
     <div className='w-[80%] sm:w-[100%] max-sm:w-full bg-white border border-gray-300 rounded-xl mt-8' style={{boxShadow: "inset 0px 1px 2.5px rgba(0, 0, 0, 0.15)" }}>
@@ -76,7 +47,7 @@ const MyOrderReview = () => {
         </div>
 
         <div className='border-2 border-[#FCB131] border-dashed rounded-3xl mt-4 p-8 flex flex-col'>
-          {orderedProducts.map((orderedProduct) => {
+          {checkoutList.map((orderedProduct) => {
             return <div key={orderedProduct.id} className="flex flex-col border-b border-b-gray-300 text-center mb-8">
               <p className="font-bold">{orderedProduct.name}</p>
               {orderedProduct.details.map((detail) => {

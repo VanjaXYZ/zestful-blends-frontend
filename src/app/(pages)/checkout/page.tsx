@@ -7,8 +7,6 @@ import styles from './Checkout.module.css'
 
 const page = () => {
 
-  // <section className={`absolute bg-[#ED7905] w-full justify-center top-[145px] h-36 max-sm:flex max-sm:h-20 z-[100] flex-col items-center gap-4 hidden sm:flex`}></section>
-
   return (
     <main>
       <div className={`absolute bg-[#ED7905] w-full justify-center top-[145px] h-36 max-lg:h-16 z-[100] flex flex-col items-center gap-4`}>
