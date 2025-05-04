@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import LogoImage from "./LogoImage";
 import NavIcons from "./NavIcons";
@@ -5,11 +7,19 @@ import NavLinkItems from "./NavLinkItems";
 import NavOrderButton from "./NavOrderButton";
 import styles from "./TopNavigation.module.css";
 
+import { usePathname } from "next/navigation";
+
 const DesktopNavigationMenu = () => {
+
+  const pathname = usePathname();
+  const isCheckout = pathname === '/checkout'
+
+  const navBgColor = isCheckout ? 'bg-[#ED7905]' : 'bg-primary-green';
+
   return (
-    <header className="w-full hidden lg:block">
+    <header className={`w-full hidden lg:block`}>
       <nav
-        className={`flex h-52 bg-primary-green justify-between flex-col sm:flex-row py-4 px-12 w-full ${styles.bottomWave} lg:flex`}
+        className={`flex h-52 ${navBgColor} justify-between flex-col sm:flex-row py-4 px-12 w-full ${styles.bottomWave} lg:flex`}
       >
         <div className="flex sm:w-1/2 gap-6">
           <LogoImage />

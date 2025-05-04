@@ -1,17 +1,29 @@
-"use client";
-const CheckoutList= {
-  id: 1,
-  productName: "Test",
-price: 10.99,};
-const CheckoutListPage = () => {
-  return (
-    <div>
-      <div>
-        <p>Name is= {CheckoutList.productName}</p>
-        <p>Color is= {CheckoutList.price}</p>
-      </div>;
-    </div>
-  );
-};
+interface orderedProduct {
+  id: number,
+  name: string,
+  details: string[],
+  price: number
+}
 
-export default CheckoutListPage;
+export const checkoutList: orderedProduct[] = [
+  {
+    id: 1,
+    name: "17'' berry pizza",
+    details: ['NO blueberry', 'Extra raspberry'],
+    price: 20.23
+  },
+
+  {
+    id: 2,
+    name: "Super Amazing Juice",
+    details: [],
+    price: 8.80
+  },
+
+  {
+    id: 3,
+    name: "Super Amazing Smooth",
+    details: [],
+    price: 9.90
+  },
+]
