@@ -12,8 +12,9 @@ const MobileHeader = () => {
 
   const pathname = usePathname();
   const isCheckout = pathname === '/checkout'
+  const isUserProfile = pathname === '/user-account' || '/personal-information' || '/history-order';
 
-  const navBgColor = isCheckout ? 'bg-[#ED7905]' : 'bg-primary-sky-blue';
+  const navBgColor = (isCheckout || isUserProfile) ? 'bg-[#ED7905]' : 'bg-primary-sky-blue';
   return (
     <header className={`lg:hidden ${navBgColor} p-6 flex w-full`}>
       <MobileLogoImage />
