@@ -91,8 +91,12 @@ const MyOrderReview = () => {
                 className="flex flex-col border-b border-b-gray-300 text-center mb-8"
               >
                 <p className="font-bold">{orderedProduct.name}</p>
-                {orderedProduct.details.map((detail) => {
-                  return <p key={`${orderedProduct.id}-${detail}`}>{detail}</p>;
+                {orderedProduct.details.map((detail, index) => {
+                  return (
+                    <p key={`${orderedProduct.id}-${detail}-${index}`}>
+                      {detail}
+                    </p>
+                  );
                 })}
                 <p className="ml-auto">${orderedProduct.price}</p>
               </div>
