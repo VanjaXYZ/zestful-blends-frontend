@@ -13,8 +13,9 @@ const DesktopNavigationMenu = () => {
 
   const pathname = usePathname();
   const isCheckout = pathname === '/checkout'
+  const isUserProfile = pathname === '/user-account' || '/personal-information' || '/history-order';
 
-  const navBgColor = isCheckout ? 'bg-[#ED7905]' : 'bg-primary-green';
+  const navBgColor = (isCheckout || isUserProfile) ? 'bg-[#ED7905]' : 'bg-primary-green';
 
   return (
     <header className={`w-full hidden lg:block`}>
