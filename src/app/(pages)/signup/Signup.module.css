@@ -1,0 +1,8 @@
+.signup-container {
+  background-image: url("/src/assets/fruits.png");
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
