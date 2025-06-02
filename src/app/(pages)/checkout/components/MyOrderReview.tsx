@@ -85,22 +85,13 @@ const MyOrderReview = () => {
 
         <div className="border-2 border-[#FCB131] border-dashed rounded-3xl mt-4 p-8 flex flex-col">
           {checkoutList.map((orderedProduct) => {
-            return (
-              <div
-                key={orderedProduct.id}
-                className="flex flex-col border-b border-b-gray-300 text-center mb-8"
-              >
-                <p className="font-bold">{orderedProduct.name}</p>
-                {orderedProduct.details.map((detail, index) => {
-                  return (
-                    <p key={`${orderedProduct.id}-${detail}-${index}`}>
-                      {detail}
-                    </p>
-                  );
-                })}
-                <p className="ml-auto">${orderedProduct.price}</p>
-              </div>
-            );
+            return <div key={orderedProduct.id} className="flex flex-col border-b border-b-gray-300 text-center mb-8">
+              <p className="font-bold">{orderedProduct.name}</p>
+              {orderedProduct.details.map((detail, index) => {
+                return <p key={`${orderedProduct.id}-${detail}-${index}`}>{detail}</p>
+              })}
+              <p className="ml-auto">${orderedProduct.price}</p>
+            </div>
           })}
           <div className="flex justify-between">
             <p className="font-bold">Sub Total:</p>
