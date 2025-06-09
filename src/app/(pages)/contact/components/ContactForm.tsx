@@ -37,13 +37,13 @@ const ContactForm = () => {
   }
   return (
     <section>
-      <h3 className="text-white text-lg font-bold">Contact Us</h3>
+      <h3 className="text-white text-lg font-bold pb-4">Contact Us</h3>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-2"
         >
-          <div className="flex justify-between">
+          <div className="flex justify-between flex-col gap-2">
             <FormField
               control={form.control}
               name="name"
@@ -53,7 +53,7 @@ const ContactForm = () => {
                     <Input
                       placeholder="Enter Your Name"
                       {...field}
-                      className="w-[400px] border-white rounded-full placeholder:text-neutral-300"
+                      className="w-[400px] max-sm:w-[100%] border-white rounded-full placeholder:text-neutral-300"
                     />
                   </FormControl>
 
@@ -70,7 +70,7 @@ const ContactForm = () => {
                     <Input
                       placeholder="Enter Email Address"
                       {...field}
-                      className="w-[400px] border-white rounded-full placeholder:text-neutral-300"
+                      className="w-[400px] max-sm:w-[100%] border-white rounded-full placeholder:text-neutral-300"
                     />
                   </FormControl>
 
@@ -89,7 +89,7 @@ const ContactForm = () => {
                     placeholder="Enter Phone Number"
                     type="number"
                     {...field}
-                    className="w-[400px] border-white rounded-full placeholder:text-neutral-300"
+                    className="w-[400px] max-sm:w-[100%] border-white rounded-full placeholder:text-neutral-300"
                   />
                 </FormControl>
 
@@ -121,7 +121,7 @@ const ContactForm = () => {
 
           <Button
             type="submit"
-            className="bg-primary-green flex gap-2 rounded-full text-white transition-colors hover:bg-primary-olive "
+            className="bg-[#93BE3B] flex gap-2 rounded-full text-white transition-colors hover:bg-primary-olive "
           >
             <span>Send Message</span> <FaLongArrowAltRight size={18} />
           </Button>

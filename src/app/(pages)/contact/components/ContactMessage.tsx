@@ -1,14 +1,14 @@
 import React from "react";
-import ImageSmoothie from "@/assets/Caribbean Bliss Smoothie-1.png";
+import ImageSmoothie from "@/assets/Caribbean Bliss Smoothie-2 grunge egg shape.png";
 import Image from "next/image";
 
 const ContactMessage = () => {
   return (
-    <section className="bg-primary-yellow-dark-shade md:p-24 space-y-12">
-      <h2 className="text-5xl text-white font-bold text-center">
+    <section className="bg-[#FFC10C] pt-8 sm:pt-12 lg:pt-24 max-lg:px-[5%]">
+      <h2 className="text-5xl text-white font-bold text-center pb-12">
         We Want You To Know!
       </h2>
-      <div className="flex justify-center gap-12">
+      <div className="flex justify-center gap-12 max-lg:flex-col max-lg:justify-center">
         <article className="pt-6 pe-12 space-y-4 max-w-xl">
           <p className="text-white">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
@@ -24,13 +24,13 @@ const ContactMessage = () => {
             numquam ullam?
           </p>
         </article>
-        <div className="w-[300px]">
+        <div className="w-[300px] max-lg:w-full flex justify-center">
           <Image
             src={ImageSmoothie}
             alt="Smoothie"
-            width={250}
-            height={500}
-            className="rounded-lg aspect-[2/3] object-cover w-[250px]"
+            width={300}
+            height={450}
+            className="rounded-lg aspect-[2/3] object-fill w-[300px]"
           />
         </div>
       </div>
