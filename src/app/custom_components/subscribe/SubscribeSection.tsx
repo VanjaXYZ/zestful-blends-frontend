@@ -6,7 +6,7 @@ const SubscribeSection = () => {
   
 
   return (
-    <section className="bg-primary-sky-blue py-12 flex justify-center flex-col items-center md:gap-8 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
+    <section className="bg-[#6E8E2D] py-12 flex justify-center flex-col items-center md:gap-8 overflow-hidden" style={{ transform: 'translateZ(0)' }}>
       <div className="md:border md:border-dashed md:w-[70%] flex flex-col items-center p-8 gap-4 rounded-3xl">
         <h3 className="text-primary-yellow text-2xl md:text-4xl text-center font-semibold">
           Subscribe To Our Newsletter

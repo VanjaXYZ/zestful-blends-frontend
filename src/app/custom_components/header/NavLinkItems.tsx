@@ -103,7 +103,7 @@ const NavLinkItems = () => {
               <Link
                 href={link.href}
                 passHref
-                className={`text-white p-4 transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-10 rounded-md px-4 py-2 font-bold ${
+                className={`text-white transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground h-10 rounded-md px-4 max-xl:px-2 py-2 font-bold ${
                   pathname === link.href && "underline underline-offset-2"
                 }`}
               >

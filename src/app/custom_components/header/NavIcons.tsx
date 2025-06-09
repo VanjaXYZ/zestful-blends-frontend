@@ -6,7 +6,7 @@ const NavIcons = () => {
   const productsInCart = ["Apple juice", "Strawberry slim shake"];
   if (productsInCart.length > 0) hasProductsInCart = true;
   return (
-    <div className="flex gap-8 relative">
+    <div className="flex gap-8 max-xl:gap-4 relative">
       <FaUser color="white" size={26} className="cursor-pointer" />
       <MdFavorite color="white" size={26} className="cursor-pointer" />
       <FaShoppingBag color="white" size={26} className="cursor-pointer" />
