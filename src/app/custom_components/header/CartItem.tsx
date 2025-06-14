@@ -11,12 +11,7 @@ interface CartItemProps {
   imageSrc: any;
   price: number;
   quantity: number;
-  onQuantityChange: (quantity: number) => void;
-  onRemoveFromCart: () => void;
-  onEditClick?: (id: string) => void;
-  updateQuantity?: (quantity: number) => void;
   variant: "cart" | "wishlist";
-  isEditing?: boolean;
 }
 const CartItem = ({
   id,

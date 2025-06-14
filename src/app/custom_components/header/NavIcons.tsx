@@ -8,9 +8,12 @@ import { MdFavorite } from "react-icons/md";
 import CartItem from "./CartItem";
 import useCartStore from "@/app/store/cartStore";
 import useWishlistStore from "@/app/store/wishlistStore";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NavIcons = () => {
-  let hasProductsInCart = false;
+  const pathname = usePathname();
+  const isCheckout = pathname === "/checkout";
   const productsInCart = useCartStore((state) => state.cart);
   const productsInWishlist = useWishlistStore((state) => state.wishlist);
 
@@ -44,8 +47,6 @@ const NavIcons = () => {
                   <>
                     <CartItem
                       variant="wishlist"
-                      onQuantityChange={() => {}}
-                      onRemoveFromCart={() => {}}
                       id={item.id}
                       key={item.id}
                       name={item.name}
@@ -91,8 +92,6 @@ const NavIcons = () => {
                   <>
                     <CartItem
                       variant="cart"
-                      onQuantityChange={() => {}}
-                      onRemoveFromCart={() => {}}
                       key={item.id}
                       id={item.id}
                       name={item.name}
@@ -113,9 +112,21 @@ const NavIcons = () => {
                 You choose : <p className="text-primary-yellow inline">ASAP</p>
               </div>
               <div className="flex  justify-center ">
-                <button className="bg-primary-yellow w-full py-2 hover:bg-primary-yellow-dark-shade rounded-full text-white">
-                  Checkout
-                </button>
+                {isCheckout ? (
+                  <Link
+                    href={"/shop"}
+                    className="text-center bg-primary-yellow w-full py-2 hover:bg-primary-yellow-dark-shade rounded-full text-white"
+                  >
+                    Keep Shopping
+                  </Link>
+                ) : (
+                  <Link
+                    href={"/checkout"}
+                    className="text-center bg-primary-yellow w-full py-2 hover:bg-primary-yellow-dark-shade rounded-full text-white"
+                  >
+                    Checkout
+                  </Link>
+                )}
               </div>
             </div>
           </div>
