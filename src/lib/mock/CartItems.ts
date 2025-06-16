@@ -2,17 +2,11 @@
 import twoJuices from "@/assets/two_juices.png";
 import lushLychee from "@/assets/lush-lychee-dream.png";
 import saladBowls from "@/assets/salad_bowls.png";
-
-export interface CartItemType {
-  name: string;
-  toppings: string[];
-  imageSrc: any;
-  price: number;
-  quantity: number;
-}
+import { CartItemType } from "@/app/model/cartItemType";
 
 export const cartItems: CartItemType[] = [
   {
+    id: "1",
     name: "Apple juice",
     toppings: ["whipped cream"],
     imageSrc: twoJuices,
@@ -20,6 +14,7 @@ export const cartItems: CartItemType[] = [
     quantity: 2,
   },
   {
+    id: "2",
     name: "Lush lychee dream",
     toppings: ["chia seeds", "vanilla", "almond milk"],
     imageSrc: lushLychee,
@@ -27,6 +22,7 @@ export const cartItems: CartItemType[] = [
     quantity: 2,
   },
   {
+    id: "3",
     name: "Salad bowls",
     toppings: ["vanilla", "cocoa", "almond milk", "chia seeds"],
     imageSrc: saladBowls,
@@ -34,6 +30,7 @@ export const cartItems: CartItemType[] = [
     quantity: 2,
   },
   {
+    id: "4",
     name: "Salad bowls",
     toppings: ["vanilla", "cocoa", "almond milk", "chia seeds"],
     imageSrc: saladBowls,
@@ -41,6 +38,7 @@ export const cartItems: CartItemType[] = [
     quantity: 2,
   },
   {
+    id: "5",
     name: "Salad bowls",
     toppings: ["vanilla", "cocoa", "almond milk", "chia seeds"],
     imageSrc: saladBowls,

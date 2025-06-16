@@ -6,12 +6,17 @@ import {
 import { FaShoppingBag, FaUser } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 import CartItem from "./CartItem";
-import { cartItems } from "@/lib/mock/CartItems";
+import useCartStore from "@/app/store/cartStore";
+import useWishlistStore from "@/app/store/wishlistStore";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NavIcons = () => {
-  let hasProductsInCart = false;
-  const productsInCart = cartItems;
-  if (productsInCart.length > 0) hasProductsInCart = true;
+  const pathname = usePathname();
+  const isCheckout = pathname === "/checkout";
+  const productsInCart = useCartStore((state) => state.cart);
+  const productsInWishlist = useWishlistStore((state) => state.wishlist);
+
   return (
     <div className="flex gap-8 max-xl:gap-4 relative">
       <FaUser color="white" size={26} className="cursor-pointer" />
@@ -19,9 +24,9 @@ const NavIcons = () => {
         <PopoverTrigger asChild>
           <div className="relative">
             <MdFavorite color="white" size={26} className="cursor-pointer" />
-            {hasProductsInCart && (
+            {productsInWishlist.length > 0 && (
               <span className="absolute -top-2 -right-2 font-bold bg-primary-yellow-dark-shade rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                {productsInCart.length}
+                {productsInWishlist.length}
               </span>
             )}
           </div>
@@ -33,28 +38,30 @@ const NavIcons = () => {
                 Wishlist
               </h2>
               <p className="flex items-center text-primary-yellow rounded-sm p-2 border border-primary-yellow text-sm">
-                {productsInCart.length} items
+                {productsInWishlist.length} items
               </p>
             </div>
-            {productsInCart.map((item) => {
-              return (
-                <>
-                  <CartItem
-                    variant="wishlist"
-                    onQuantityChange={() => {}}
-                    onRemoveFromCart={() => {}}
-                    onEditClick={() => {}}
-                    key={item.name}
-                    name={item.name}
-                    toppings={item.toppings}
-                    imageSrc={item.imageSrc}
-                    price={item.price}
-                    quantity={item.quantity}
-                  />
-                  <hr className="border-t-2 border-primary-yellow w-full my-2" />
-                </>
-              );
-            })}
+            {productsInWishlist.length > 0 ? (
+              productsInWishlist.map((item) => {
+                return (
+                  <>
+                    <CartItem
+                      variant="wishlist"
+                      id={item.id}
+                      key={item.id}
+                      name={item.name}
+                      toppings={item.toppings}
+                      imageSrc={item.imageSrc}
+                      price={item.price}
+                      quantity={item.quantity}
+                    />
+                    <hr className="border-t-2 border-primary-yellow w-full my-2" />
+                  </>
+                );
+              })
+            ) : (
+              <p className=" text-center text-xl m-5">Your wishlist is empty</p>
+            )}
           </div>
         </PopoverContent>
       </Popover>
@@ -62,7 +69,7 @@ const NavIcons = () => {
         <PopoverTrigger asChild>
           <div className="relative">
             <FaShoppingBag color="white" size={26} className="cursor-pointer" />
-            {hasProductsInCart && (
+            {productsInCart.length > 0 && (
               <span className="absolute -top-2 -right-2 font-bold bg-primary-yellow-dark-shade rounded-full w-5 h-5 flex items-center justify-center text-xs">
                 {productsInCart.length}
               </span>
@@ -79,33 +86,47 @@ const NavIcons = () => {
                 {productsInCart.length} items
               </p>
             </div>
-            {productsInCart.map((item) => {
-              return (
-                <>
-                  <CartItem
-                    variant="cart"
-                    onQuantityChange={() => {}}
-                    onRemoveFromCart={() => {}}
-                    onEditClick={() => {}}
-                    key={item.name}
-                    name={item.name}
-                    toppings={item.toppings}
-                    imageSrc={item.imageSrc}
-                    price={item.price}
-                    quantity={item.quantity}
-                  />
-                  <hr className="border-t-2 border-primary-yellow w-full my-2" />
-                </>
-              );
-            })}
+            {productsInCart.length > 0 ? (
+              productsInCart.map((item) => {
+                return (
+                  <>
+                    <CartItem
+                      variant="cart"
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      toppings={item.toppings}
+                      imageSrc={item.imageSrc}
+                      price={item.price}
+                      quantity={item.quantity}
+                    />
+                    <hr className="border-t-2 border-primary-yellow w-full my-2" />
+                  </>
+                );
+              })
+            ) : (
+              <p className=" text-center text-xl m-5">Your cart is empty</p>
+            )}
             <div className="flex flex-col gap-2 mt-2 w-full">
               <div>
                 You choose : <p className="text-primary-yellow inline">ASAP</p>
               </div>
-              <div className="flex justify-center ">
-                <button className="bg-primary-yellow text-black py-1 px-3 text-sm rounded hover:bg-yellow-500">
-                  Checkout
-                </button>
+              <div className="flex  justify-center ">
+                {isCheckout ? (
+                  <Link
+                    href={"/shop"}
+                    className="text-center bg-primary-yellow w-full py-2 hover:bg-primary-yellow-dark-shade rounded-full text-white"
+                  >
+                    Keep Shopping
+                  </Link>
+                ) : (
+                  <Link
+                    href={"/checkout"}
+                    className="text-center bg-primary-yellow w-full py-2 hover:bg-primary-yellow-dark-shade rounded-full text-white"
+                  >
+                    Checkout
+                  </Link>
+                )}
               </div>
             </div>
           </div>
