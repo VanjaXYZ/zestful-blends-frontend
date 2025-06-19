@@ -56,7 +56,7 @@ const SubscribeInput = () => {
         />
         <Button
           type="submit"
-          className="bg-primary-orange flex gap-2 rounded-full text-white transition-colors hover:bg-primary-dark-orange "
+          className="bg-primary-orange flex gap-2 rounded-full text-white transition-colors hover:bg-primary-yellow "
         >
           <span>Subscribe</span> <FaLongArrowAltRight size={18} />
         </Button>

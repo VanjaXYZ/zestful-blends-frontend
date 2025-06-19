@@ -4,7 +4,7 @@ import HeroJuiceInfo from "./HeroJuiceInfo";
 const HeroSection = () => {
   return (
     <section className="relative w-full">
-      <div className="flex justify-center max-w-[1200px] flex-col sm:flex-row m-auto">
+      <div className="flex max-lg:flex-col justify-center w-full px-20 py-10">
         <HeroContent />
         <HeroImage />
       </div>

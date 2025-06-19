@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const InfiniteScrollText = ({ stringArray }: { stringArray: string[] }) => {
   return (
-    <div className="overflow-hidden whitespace-nowrap bg-primary-dark-orange py-2">
+    <div className="overflow-hidden whitespace-nowrap bg-primary-orange py-2">
       <motion.div
         animate={{ x: [-400, -200] }}
         transition={{ repeat: Infinity, duration: 15, ease: "linear" }}

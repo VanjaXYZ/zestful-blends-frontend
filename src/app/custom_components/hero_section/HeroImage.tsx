@@ -4,21 +4,19 @@ import Image from "next/image";
 import cherry from "@/assets/skybenversep3150_Please_generate_a_real_cherry_on_a_white_backg_a9b08a6c-9394-4a18-b3ab-fe3f72164563-removebg-preview.png";
 const HeroImage = () => {
   return (
-    <div className="w-1/2 hidden lg:inline-block">
-      <div className="relative mt-60">
+    <div className="w-1/2 max-lg:w-full max-lg:justify-center flex max-lg:p-10 lg:pl-10">
+      <div className="relative w-fit">
         <Image
           src={juices}
-          width={1200}
-          height={1200}
+          width={625}
+          height={625}
           alt="Zestful Blends Logo"
-          className="rotate transform scale-x-[-1]"
+          className="rotate transform scale-x-[-1] min-w-[280px]"
         />
         <Image
           src={cherry}
-          width={120}
-          height={120}
           alt="Zestful Blends Logo"
-          className="rotate-90 absolute top-16 left-16"
+          className="w-[120px] h-[120px] max-sm:w-[90px] max-sm:h-[90px] rotate-90 absolute top-[2%] left-[7%]"
         />
       </div>
     </div>
