@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const navLinks: NavLinkSubpages[] = [
   {
@@ -19,8 +20,40 @@ const navLinks: NavLinkSubpages[] = [
   },
   {
     id: 2,
-    href: "/menu",
+    href: "/shop",
     text: "Menu",
+    subpages: [
+      {
+        id: 2.1,
+        href: '/shop/smoothies',
+        text: "Smoothies",
+      },
+      {
+        id: 2.2,
+        href: '/shop/fruit-shakes',
+        text: "Fruit shakes",
+      },
+      {
+        id: 2.3,
+        href: '/shop/fruit-juices',
+        text: "Fruit Juices",
+      },
+      {
+        id: 2.4,
+        href: '/shop/fruit-pizzas',
+        text: "Fruit Pizzas",
+      },
+      {
+        id: 2.5,
+        href: '/shop/fruit-salads',
+        text: "Fruit Salads",
+      },
+      {
+        id: 2.6,
+        href: '/shop/pre-packed-fruits',
+        text: "Pre-packed fruits",
+      }
+    ]
   },
   {
     id: 3,
@@ -69,17 +102,22 @@ const navLinks: NavLinkSubpages[] = [
 const NavLinkItems = () => {
   const pathname = usePathname();
 
+  const [isPages, setIsPages] = useState<boolean>(false)
+
   return (
-    <NavigationMenu className="flex items-start [&_div.absolute]:right-10 [&_div.absolute]:top-12 z-[1000]">
+    <NavigationMenu className="flex items-start [&_div.absolute]:right-10 [&_div.absolute]:top-12 z-[1000]" isPages={isPages}> 
       <NavigationMenuList>
         {navLinks.map((link: NavLinkSubpages) => (
-          <NavigationMenuItem key={link.id}>
+          <NavigationMenuItem key={link.id}
+          onMouseEnter={() => setIsPages(link.text === 'Pages')}>
             {link.subpages ? (
               <>
                 <NavigationMenuTrigger className="text-white font-bold p-4 bg-transparent">
                   {link.text}
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="w-full flex flex-col gap-8">
+                {link.text === 'Pages' ? 
+
+                  <NavigationMenuContent className="w-full flex flex-col gap-8">
                   <NavigationMenuList className="flex flex-col bg-primary-green">
                     {link.subpages.map((subpage) => (
                       <NavigationMenuItem
@@ -97,7 +135,29 @@ const NavLinkItems = () => {
                       </NavigationMenuItem>
                     ))}
                   </NavigationMenuList>
+                </NavigationMenuContent> :
+
+                <NavigationMenuContent className="w-full flex flex-col gap-8">
+                <NavigationMenuList className="flex flex-col bg-primary-green">
+                  {link.subpages.map((subpage) => (
+                    <NavigationMenuItem
+                      key={subpage.id}
+                      className="transition-colors w-[150px] text-start p-2 text-white font-bold hover:underline hover:underline-offset-4"
+                    >
+                      <Link
+                        key={subpage.id}
+                        href={subpage.href}
+                        passHref
+                        className="text-white font-bold"
+                      >
+                        {subpage.text}
+                      </Link>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
                 </NavigationMenuContent>
+                }
+                
               </>
             ) : (
               <Link

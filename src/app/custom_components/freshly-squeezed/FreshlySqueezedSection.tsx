@@ -3,7 +3,7 @@ import FreshlySqueezedList from "./FreshlySqueezedList";
 
 const FreshlySqueezedSection = () => {
   return (
-    <div className="bg-primary-teal">
+    <div className="lg:flex lg:justify-center">
       <FreshlySqueezedList />
     </div>
   );

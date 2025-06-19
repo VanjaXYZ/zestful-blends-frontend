@@ -40,11 +40,11 @@ const items = [
 
 const FreshlySqueezedList = () => {
   return (
-    <div className="flex flex-col items-center py-12 justify-center w-full">
-      <h2 className="lg:text-4xl text-xl font-bold text-white text-center">
+    <div className="flex flex-col items-center py-12 justify-center lg:w-[920px] bg-primary-green rounded-3xl max-lg:mx-10 max-sm:mx-5">
+      <h2 className="lg:text-4xl text-xl font-bold text-black text-center px-10">
         Freshly Squeezed For You
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 py-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 py-8">
         {items?.map((item: any) => (
           <FreshlySqueezedItem
             icon={<item.imageSrc size={40} color={"white"} />}
@@ -54,7 +54,7 @@ const FreshlySqueezedList = () => {
         ))}
       </div>
       <Link href={"/about-us"}>
-        <Button className="bg-primary-dark-teal w-[200px] font-semibold transition-colors hover:bg-white rounded-full text-white hover:text-black">
+        <Button className="bg-black px-10 font-semibold transition-colors hover:bg-white text-primary-green rounded-xl">
           Our Story
         </Button>
       </Link>

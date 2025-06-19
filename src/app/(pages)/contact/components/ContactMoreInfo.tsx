@@ -4,7 +4,7 @@ import { Globe, MailIcon, MapPin, PhoneIcon } from "lucide-react";
 const ContactMoreInfo = () => {
   return (
     <section className="">
-      <h2 className="text-6xl max-lg:text-5xl text-white font-bold ">Need More Information?</h2>
+      <h2 className="text-6xl max-lg:text-4xl text-white font-bold ">Need More Information?</h2>
       <ul className="pt-6 text-white space-y-4">
         <li className="flex gap-4 font-bold">
           <PhoneIcon />
