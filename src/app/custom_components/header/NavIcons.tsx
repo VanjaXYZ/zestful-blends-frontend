@@ -19,7 +19,9 @@ const NavIcons = () => {
 
   return (
     <div className="flex gap-8 max-xl:gap-4 relative">
-      <FaUser color="white" size={26} className="cursor-pointer" />
+      <Link href="/signup">
+        <FaUser color="white" size={26} className="cursor-pointer" />
+      </Link>
       <Popover>
         <PopoverTrigger asChild>
           <div className="relative">
