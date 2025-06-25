@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
+import Link from "next/link"
 
 const DiscoverMenuProduct = ({
   productName,
@@ -18,9 +19,11 @@ const DiscoverMenuProduct = ({
         alt="Zestful Blends Product Image"
         className="rounded-full"
       />
-      <Button className="bg-primary-green text-white font-semibold rounded-full w-[150px] hover:bg-primary-yellow transition-colors">
-        {productName}
-      </Button>
+      <Link href={`/shop/${productName.toLowerCase()}`}>
+        <Button className="bg-primary-green text-white font-semibold rounded-full w-[150px] hover:bg-primary-yellow transition-colors">
+          {productName}
+        </Button>
+      </Link>
     </div>
   );
 };

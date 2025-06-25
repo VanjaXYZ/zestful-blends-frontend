@@ -33,13 +33,13 @@ const MobileNavigationMenu = () => {
         </SheetTrigger>
         <SheetContent
           side={"top"}
-          className="bg-primary-sky-blue mt-20 lg:hidden fixed min-h-full w-full z-50"
+          className="bg-[#6E8E2D] lg:hidden fixed min-h-full w-full z-50 flex justify-center items-center"
         >
           <SheetHeader>
             <SheetTitle></SheetTitle>
             <SheetDescription className="flex justify-between">
               <MobileTransformedLogo />
-              <MobileNavLinkItems />
+              <MobileNavLinkItems onNavigate={() => setIsOpen(false)}/>
             </SheetDescription>
           </SheetHeader>
         </SheetContent>
