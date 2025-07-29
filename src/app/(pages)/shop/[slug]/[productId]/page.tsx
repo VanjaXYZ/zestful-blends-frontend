@@ -28,6 +28,12 @@ import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import StarRating from "./components/StarRating";
+import useWishlistStore from "@/app/store/wishlistStore";
+import {nanoid} from 'nanoid'
+import useCartStore from "@/app/store/cartStore";
+import { useWatch } from "react-hook-form";
+import { loadCartItems } from "@/lib/mock/CartItems";
+import { CartItemType } from "@/app/model/cartItemType";
 
 export default function ProductPage({ params }: { params: { slug: string; productId: string } }) {
   
@@ -37,10 +43,81 @@ export default function ProductPage({ params }: { params: { slug: string; produc
   const product = page.products.find((p) => p.id === params.productId);
   if (!product) notFound();
 
-  const methods = useForm();
+  const orderSchema = z.object({
+    collectionOption: z.string(),
+    size: z.string().min(1, "size is required"),
+    fruits: z.string(),
+    toppings: z.string(),
+  })
 
-  const [itemsToBeAddedToCart, setItemsToBeAddedToCart] = useState<number>(1)
-  const [addedToWishlist, setAddedToWishlist] = useState<boolean>(false)
+  type FormOrderValues = z.infer<typeof orderSchema>;
+
+  const methods = useForm<FormOrderValues>({
+    resolver: zodResolver(orderSchema),
+    defaultValues: {
+      collectionOption: '',
+      size: '',
+      fruits: '',
+      toppings: '',
+    }
+  });
+
+  const [submitAction, setSubmitAction] = useState<"cart" | "wishlist" | null>(null);
+
+  const onCartOrWishlistSubmit = (data: FormOrderValues) => {
+
+    const currentQuantity = itemsNumber;
+
+    if (submitAction === "cart") {
+      addToCart({
+        id: `${product.id}-${nanoid()}`,
+        name: product.productName,
+        toppings: data.toppings,
+        imageSrc: product.images[0],
+        size: data.size,
+        price: data.size === "Small"
+          ? product.priceMin * itemsNumber
+          : data.size === "Medium"
+          ? product.priceMed * itemsNumber
+          : data.size === "Large"
+          ? product.priceMax * itemsNumber
+          : null,
+        quantity: currentQuantity,
+        collectionOption: data.collectionOption,
+        fruits: data.fruits,
+      });
+      setItemsNumber(1);
+      resetMainForm();
+    }
+    
+    if (submitAction === "wishlist") {
+      addToWishlist({
+        id: `${product.id}-${nanoid()}`,
+        name: product.productName,
+        toppings: data.toppings,
+        imageSrc: product.images[0],
+        size: data.size,
+        price: data.size === "Small"
+          ? product.priceMin * itemsNumber
+          : data.size === "Medium"
+          ? product.priceMed * itemsNumber
+          : data.size === "Large"
+          ? product.priceMax * itemsNumber
+          : null,
+        quantity: currentQuantity,
+        collectionOption: data.collectionOption,
+        fruits: data.fruits,
+      });
+      console.log("data:", data)
+      console.log(useWishlistStore.getState().wishlist)
+      setItemsNumber(1);
+      resetMainForm();
+    }
+
+    setPopupVisible(true);
+  } 
+
+  const [itemsNumber, setItemsNumber] = useState<number>(1)
 
   const [arrowsVisibility, setArrowsVisibility] = useState<boolean>(false)
   const [imageIndex, setImageIndex] = useState<number>(0)
@@ -79,7 +156,6 @@ export default function ProductPage({ params }: { params: { slug: string; produc
   });
 
   const {
-    handleSubmit,
     reset,
     formState: { isSubmitSuccessful }
   } = ratingMethods;
@@ -142,6 +218,20 @@ export default function ProductPage({ params }: { params: { slug: string; produc
       }
   }
 
+  const { addToWishlist } = useWishlistStore();
+  const { addToCart } = useCartStore()
+  const wishlist = useWishlistStore((state) => state.wishlist);
+  const cart = useCartStore((state) => state.cart)
+  const { /*getValues,*/ reset : resetMainForm } = methods;
+  // const values = getValues();
+  const watchedSize = useWatch({ name: "size", control: methods.control, });
+
+  useEffect(() => {
+  console.log("Zaktualizowana wishlist:", wishlist);
+}, [wishlist]);
+
+const [popupVisible, setPopupVisible] = useState(false);
+
   return (
     <main>
 
@@ -177,94 +267,105 @@ export default function ProductPage({ params }: { params: { slug: string; produc
               <p className="text-xl font-semibold text-primary-green">Price: ${product.priceMin.toFixed(2)} - ${product.priceMax.toFixed(2)}</p>
               {product.isNewProduct && <p className="text-green-600 mt-2">New Product!</p>}
             </div>
-            <div className="flex flex-col gap-3">
+          {product.ingredients ? 
+          <div className="flex flex-col gap-3">
               <p>Ingredients:</p>
               <div>
-                {product.ingredients.map(ingredient => (
+                {product.ingredients?.map(ingredient => (
                   <div key={product.id} className="flex gap-2 items-center">
                     <FaCheck className="text-primary-green"/>
                     <p>{ingredient}</p>
                   </div>
                 ))}
               </div>
-            </div>
-            {product.collectionOptions ? 
-              <div className="flex flex-col gap-2">
-                <p>THE ZEST COLLECTION</p>
-                <FormProvider {...methods}>
-                  <form>
-                    <Dropdown name="collectionOption" 
-                    title="Choose an option"
-                    fieldWidth={100} 
-                    options={product.collectionOptions}/>
-                  </form>
-                </FormProvider>
-              </div> : null
-            }
-            {product.sizes ? 
-              <div className="flex flex-col gap-2">
-                <p>SIZE</p>
-                <FormProvider {...methods}>
-                  <form>
-                    <Dropdown name="sizes" 
-                    title="Choose an option"
-                    fieldWidth={100} 
-                    options={product.sizes}/>
-                  </form>
-                </FormProvider>
-              </div> : null
-            }
-            <div className="flex flex-col gap-2">
-              <p>SELECT YOUR FRUITS</p>
-              <FormProvider {...methods}>
-                <form>
-                  <FormElementBigger name="fruits" fieldWidth={100}/>
-                </form>
-              </FormProvider>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>SELECT YOUR TOPPINGS</p>
-              <FormProvider {...methods}>
-                <form>
-                  <FormElementBigger name="toppings" fieldWidth={100}/>
-                </form>
-              </FormProvider>
-            </div>
-            <p className={`text-primary-orange ${cherryBomb.className} text-3xl`}>Select Your Fruits</p>
-            <form><Checkbox text="CHOOSE UP TO 8 FRUTS FOR YOUR PLATTER"/></form>
-            <div className="flex gap-4">
-              <div className="flex gap-6 text-2xl items-center border border-black px-4">
-                <button onClick={() => setItemsToBeAddedToCart(prev => prev + 1)}>+</button>
-                <div className="w-6 text-center">{itemsToBeAddedToCart}</div>
-                <button onClick={() => setItemsToBeAddedToCart(prev => prev >1 ? prev - 1 : prev)}>&ndash;</button>
-              </div>
-              <button className={`text-white text-2xl bg-black px-10 py-2`}>
-                {<div className="flex gap-4 items-center">
-                  <RiShoppingBag4Fill/>
-                  <p className={`${cherryBomb.className}`}>ADD TO CART</p>
-                </div>}
-              </button>
-            </div>
-            <button onClick={() => setAddedToWishlist(prev => !prev)} className="text-2xl w-fit text-white">
-              {addedToWishlist === false ? 
-              <div className="w-full flex gap-2 items-center">
-                <div className="w-fit relative">
-                  <FaRegHeart />
-                  <FaPlus className="absolute bottom-0 left-0 text-primary-orange text-xs" />
-                </div>
-                <p className="text-black">Add to Wishlist</p>
-              </div>
-              
-                :
-                <div className="w-full flex gap-2 items-center">
-                  <div className="w-fit relative">
-                    <FaHeart />
-                    <FaCheck className="absolute bottom-0 left-0 text-green-500 text-xs" />
+            </div> : null}
+            
+            <FormProvider {...methods}>
+              <form onSubmit={methods.handleSubmit(onCartOrWishlistSubmit)}>
+                <div className="flex flex-col gap-10">
+                  {product.collectionOptions ? 
+                  <div className="flex flex-col gap-2">
+                    <p>THE ZEST COLLECTION</p>
+                      <Dropdown name="collectionOption" 
+                      title="Choose an option"
+                      fieldWidth={100} 
+                      options={product.collectionOptions}/>
+                  </div> : null
+                  }
+                  {product.sizes ? 
+                    <div className="flex flex-col gap-2">
+                      <p>SIZE</p>
+                      <Dropdown name="size" 
+                        title="Choose an option"
+                        fieldWidth={100} 
+                        options={product.sizes}/>
+                    </div> : null
+                  }
+                  <div className="flex flex-col gap-2">
+                    <p>SELECT YOUR FRUITS</p>
+                    <FormElementBigger name="fruits" fieldWidth={100}/>
                   </div>
-                <p className="text-black">Added to Wishlist</p>
+                  <div className="flex flex-col gap-2">
+                    <p>SELECT YOUR TOPPINGS</p>
+                    <FormElementBigger name="toppings" fieldWidth={100}/>   
+                  </div>
+                </div>
+
+                <div className ="flex flex-col gap-4 pt-10">
+                    <p className={`text-primary-orange ${cherryBomb.className} text-3xl`}>Select Your Fruits</p>
+                  <Checkbox text="CHOOSE UP TO 8 FRUTS FOR YOUR PLATTER"/>
+
+                  <p className="text-xl">{watchedSize === "Small" ? `$${(product.priceMin * itemsNumber).toFixed(2)}` :
+                      watchedSize === "Medium" ? `$${(product.priceMed * itemsNumber).toFixed(2)}` :
+                      watchedSize === "Large" ? `$${(product.priceMax * itemsNumber).toFixed(2)}` :
+                      null}</p>
+
+                  <div className="flex gap-4">
+                    <div className="flex gap-6 text-2xl items-center border border-black px-4">
+                      <button type="button" onClick={() => setItemsNumber(prev => prev + 1)}>+</button>
+                      <div className="w-6 text-center">{itemsNumber}</div>
+                      <button type="button" onClick={() => setItemsNumber(prev => prev >1 ? prev - 1 : prev)}>&ndash;</button>
+                    </div>
+                    <button 
+                      type='submit' 
+                      onClick={() => {setSubmitAction("cart");}} 
+                      className={`text-white text-2xl bg-black px-10 py-2`}>
+                      {<div className="flex gap-4 items-center">
+                        <RiShoppingBag4Fill/>
+                        <p className={`${cherryBomb.className}`}>ADD TO CART</p>
+                      </div>}
+                    </button>
+                  </div>
+                  <button 
+                    onClick = {() => {setSubmitAction("wishlist");}}
+                    type="submit" 
+                    className="text-2xl w-fit text-white">
+                    <div className="w-full flex gap-2 items-center">
+                      <div className="w-fit relative">
+                        <FaRegHeart />
+                        <FaPlus className="absolute bottom-0 left-0 text-primary-orange text-xs" />
+                      </div>
+                      <p className="text-black">Add to Wishlist</p>
+                    </div>
+                  </button>
+                </div>
+              </form>
+            </FormProvider>
+
+            {popupVisible && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+              <div className="bg-white p-6 rounded-lg shadow-lg text-center w-[90%] max-w-md animate-fade-in">
+                <p className="text-xl font-semibold text-green-600">Product added to {submitAction === "cart" ? "cart" : "wishlist"}</p>
+                <button
+                  onClick={() => setPopupVisible(false)}
+                  className="mt-4 text-white bg-primary-orange px-4 py-2 rounded"
+                >
+                  OK
+                </button>
               </div>
-              }
-            </button>
+            </div>
+)}
+            
             <div className="flex flex-wrap gap-4">
               {product.images.map((image, index) => 
                 <Image key={index} src={image} alt={product.productName} className="w-32 h-32 cursor-pointer" onClick={() => setImageIndex(index)}/>
@@ -280,8 +381,8 @@ export default function ProductPage({ params }: { params: { slug: string; produc
             <button onClick={() => scrollTo(reviewsRef)}>Reviews {`(${product.reviews ? product.reviews.length : 0})`}</button>
           </div>
           <div ref={descriptionRef} className="scroll-mt-4">
-            {product.description?.map(paragraph => (
-              <div className="flex flex-col gap-4" key={paragraph.id}>
+            {product.description?.map((paragraph, index) => (
+              <div className="flex flex-col gap-4" key={`${paragraph.id}-${index}`}>
                 {paragraph.paragraphTitle && <h3 className={`text-2xl text-primary-orange whitespace-pre-line ${cherryBomb.className}`}>{paragraph.paragraphTitle}</h3>}
                 {paragraph.paragraphTextBigger && <p className="text-xl whitespace-pre-line">{paragraph.paragraphTextBigger}</p>}
                 {paragraph.paragraphTextSmaller && <p className="text-lg whitespace-pre-line">{paragraph.paragraphTextSmaller}</p>}
@@ -290,8 +391,8 @@ export default function ProductPage({ params }: { params: { slug: string; produc
             }
           </div>
           <div ref={additionalRef} className="scroll-mt-4">
-            {product.additionalInformations?.map((additionalInformation) => (
-              <div className="flex gap-2" key={additionalInformation.id}>
+            {product.additionalInformations?.map((additionalInformation, index) => (
+              <div className="flex gap-2" key={`${additionalInformation.id}-${index}`}>
                 <h2 className="font-bold">{additionalInformation.title}:</h2>
                 <p>{additionalInformation.text}</p>
               </div>
@@ -305,8 +406,8 @@ export default function ProductPage({ params }: { params: { slug: string; produc
                   {product.reviews
                   ?.slice()
                   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-                  .map(review => (
-                    <div key={review.id} className="border border-2 p-4 flex flex-col gap-2">
+                  .map((review, index) => (
+                    <div key={`${review.id}-${index}`}  className="border border-2 p-4 flex flex-col gap-2">
                       <div className="flex justify-between">
                         <p>customer: <span className="font-bold">{review.customerName}</span></p>
                         <p>rate: <span className="font-bold">{review.rate}</span></p>
@@ -433,9 +534,9 @@ export default function ProductPage({ params }: { params: { slug: string; produc
           <section aria-label="related products" className="flex flex-col gap-8">
             <h2 className={`${cherryBomb.className} text-4xl text-primary-green text-center mt-8`}>Related products</h2>
             <div className="flex w-full justify-between gap-16">
-              {product.relatedProducts?.map(relatedProduct => {
+              {product.relatedProducts?.map((relatedProduct, index) => {
                 const isWishlisted = wishlistState[relatedProduct.id] ?? false;
-                return (<div key={relatedProduct.id} className="flex flex-col flex-1 gap-1 items-center">
+                return (<div key={`${relatedProduct.id}-${index}`} className="flex flex-col flex-1 gap-1 items-center">
                   <Link href={`/shop/${params.slug}/${relatedProduct.id}`}>
                     <Image src={relatedProduct.images[0]} alt="related product" className=""/>
                   </Link>

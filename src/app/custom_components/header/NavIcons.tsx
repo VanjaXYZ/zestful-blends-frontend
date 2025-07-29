@@ -54,7 +54,7 @@ const NavIcons = () => {
                       name={item.name}
                       toppings={item.toppings}
                       imageSrc={item.imageSrc}
-                      price={item.price}
+                      price={item.price ?? 0}
                       quantity={item.quantity}
                     />
                     <hr className="border-t-2 border-primary-yellow w-full my-2" />
@@ -99,7 +99,7 @@ const NavIcons = () => {
                       name={item.name}
                       toppings={item.toppings}
                       imageSrc={item.imageSrc}
-                      price={item.price}
+                      price={item.price ?? 0}
                       quantity={item.quantity}
                     />
                     <hr className="border-t-2 border-primary-yellow w-full my-2" />

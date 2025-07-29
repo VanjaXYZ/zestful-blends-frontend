@@ -32,9 +32,10 @@ interface Product {
   images: StaticImageData[];
   productName: string;
   priceMin: number;
+  priceMed: number;
   priceMax: number;
   isNewProduct: boolean;
-  ingredients: string[];
+  ingredients?: string[];
   collectionOptions?: string[];
   sizes: string[];
   description?: paragraph[]
@@ -49,16 +50,19 @@ const relatedProductsExample = [
     images: [Image1],
     productName: "Strawberry Juice",
     priceMin: 9.70,
+    priceMed: 10,
     priceMax: 16.00,
     isNewProduct: true,
     ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
     sizes: ["Large", "Medium", "Small"],
+    
   },
   {
         id: "12",
         images: [Image3, Image4],
         productName: "Mango Juice",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: false,
         ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
@@ -110,6 +114,7 @@ const relatedProductsExample = [
     images: [Image3],
     productName: "Mango Juice",
     priceMin: 9.70,
+    priceMed: 10,
     priceMax: 16.00,
     isNewProduct: false,
     ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
@@ -120,6 +125,7 @@ const relatedProductsExample = [
     images: [Image4],
     productName: "Pomegranate Juice very very tasty",
     priceMin: 5.50,
+    priceMed: 10,
     priceMax: 13.00,
     isNewProduct: true,
     ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
@@ -130,6 +136,7 @@ const relatedProductsExample = [
     images: [Image1],
     productName: "Bubble Milk Tea",
     priceMin: 5.50,
+    priceMed: 10,
     priceMax: 13.00,
     isNewProduct: true,
     ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
@@ -146,117 +153,578 @@ export const pages: Record<string, { title: string; products: Product[] }> = {
         images: [Image1],
         productName: "Strawberry Juice",
         priceMin: 9.70,
+        priceMed: 10,
         priceMax: 16.00,
         isNewProduct: true,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "2",
         images: [Image2],
         productName: "Tomato Juice",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: false,
         ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "3",
         images: [Image3],
         productName: "Mango Juice",
         priceMin: 9.70,
+        priceMed: 10,
         priceMax: 16.00,
         isNewProduct: false,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "4",
         images: [Image4],
         productName: "Pomegranate Juice very very tasty and superdelicious",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: true,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "5",
         images: [Image1],
         productName: "Bubble Milk Tea",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: true,
         ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "6",
         images: [Image2],
         productName: "Kiwi Juice",
         priceMin: 9.70,
+        priceMed: 10,
         priceMax: 16.00,
         isNewProduct: false,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "7",
         images: [Image3],
         productName: "Pomegranate Juice",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: false,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "8",
         images: [Image4],
         productName: "Bubble Milk Tea",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: false,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "9",
         images: [Image1],
         productName: "Kiwi Juice",
         priceMin: 9.70,
+        priceMed: 10,
         priceMax: 16.00,
         isNewProduct: false,
         ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
-        
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "10",
         images: [Image1],
         productName: "Strawberry Juice",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: true,
         ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "11",
         images: [Image2],
         productName: "Tomato Juice",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: false,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
       {
         id: "12",
         images: [Image3, Image4],
         productName: "Mango Juice",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: false,
         ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
@@ -309,10 +777,52 @@ export const pages: Record<string, { title: string; products: Product[] }> = {
         images: [Image4],
         productName: "Pomegranate Juice very very tasty",
         priceMin: 9.70,
+        priceMed: 10,
         priceMax: 16.00,
         isNewProduct: true,
         ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
         
       },
       {
@@ -320,28 +830,1120 @@ export const pages: Record<string, { title: string; products: Product[] }> = {
         images: [Image1],
         productName: "Bubble Milk Tea",
         priceMin: 5.50,
+        priceMed: 10,
         priceMax: 13.00,
         isNewProduct: true,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
       },
     ],
    },
-  juices: { 
+  "fruit-juices": { 
     title: 'Juices',
-    products: [] 
+    products: [
+      {
+        id: "11",
+        images: [Image2],
+        productName: "Tomato Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "12",
+        images: [Image3, Image4],
+        productName: "Mango Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+        
+      },
+      {
+        id: "13",
+        images: [Image4],
+        productName: "Pomegranate Juice very very tasty",
+        priceMin: 9.70,
+        priceMed: 10,
+        priceMax: 16.00,
+        isNewProduct: true,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+        
+      },
+    ] 
   },
-  salads: { 
+  "fruit-salads": { 
     title: 'Salads',
-    products: []
+    products: [
+      {
+        id: "4",
+        images: [Image4],
+        productName: "Pomegranate Juice very very tasty and superdelicious",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: true,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "5",
+        images: [Image1],
+        productName: "Bubble Milk Tea",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: true,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "6",
+        images: [Image2],
+        productName: "Kiwi Juice",
+        priceMin: 9.70,
+        priceMed: 10,
+        priceMax: 16.00,
+        isNewProduct: false,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "7",
+        images: [Image3],
+        productName: "Pomegranate Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "8",
+        images: [Image4],
+        productName: "Bubble Milk Tea",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+    ]
   },
-  shakes: { 
+  "fruit-shakes": { 
     title: 'Shakes',
-    products: [] },
+    products: [
+       {
+        id: "10",
+        images: [Image1],
+        productName: "Strawberry Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: true,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "11",
+        images: [Image2],
+        productName: "Tomato Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "12",
+        images: [Image3, Image4],
+        productName: "Mango Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+        
+      },
+      {
+        id: "13",
+        images: [Image4],
+        productName: "Pomegranate Juice very very tasty",
+        priceMin: 9.70,
+        priceMed: 10,
+        priceMax: 16.00,
+        isNewProduct: true,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+        
+      },
+      {
+        id: "14",
+        images: [Image1],
+        productName: "Bubble Milk Tea",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: true,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+    ] },
   'fruit-pizzas': { 
     title: 'Fruit Pizzas',
-    products: [] },
+    products: [
+      {
+        id: "13",
+        images: [Image4],
+        productName: "Pomegranate Juice very very tasty",
+        priceMin: 9.70,
+        priceMed: 10,
+        priceMax: 16.00,
+        isNewProduct: true,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+        
+      },
+      {
+        id: "14",
+        images: [Image1],
+        productName: "Bubble Milk Tea",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: true,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+    ] },
   'pre-packed-fruits': { 
     title: 'Pre-packed Fruits',
-    products: [] },
+    products: [
+       {
+        id: "10",
+        images: [Image1],
+        productName: "Strawberry Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: true,
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "11",
+        images: [Image2],
+        productName: "Tomato Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+      {
+        id: "12",
+        images: [Image3, Image4],
+        productName: "Mango Juice",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: false,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+        
+      },
+      {
+        id: "13",
+        images: [Image4],
+        productName: "Pomegranate Juice very very tasty",
+        priceMin: 9.70,
+        priceMed: 10,
+        priceMax: 16.00,
+        isNewProduct: true,
+        ingredients: ["Raspberries", "Slices of Apple", "Water or ice for blending"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+        
+      },
+      {
+        id: "14",
+        images: [Image1],
+        productName: "Bubble Milk Tea",
+        priceMin: 5.50,
+        priceMed: 10,
+        priceMax: 13.00,
+        isNewProduct: true,
+        ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
+        sizes: ["Large", "Medium", "Small"],
+        description: [
+          {
+            id: 1,
+            paragraphTextBigger: 'Savor the sophisticated and invigorating flavors of the Pomegranate Orchard Blend Smoothie. This unique blend combines the sweet and juicy pomegranate arils, crisp pear slices, and succulent red grapes, offering a perfect balance of orchard fruits. A sprig of rosemary adds an aromatic herbal note, while sparkling water brings a fizzy twist that elevates the taste experience. Ideal for a refreshing morning boost or an afternoon pick-me-up, the Pomegranate Orchard Blend Smoothie not only delights the taste buds but also provides an array of health benefits. Sip, savor, and indulge in this fizzy, nutrient-packed smoothie with every refreshing sip.',
+          },
+          {
+            id: 2,
+            paragraphTitle: 'Health Highlights',
+            paragraphTextSmaller: 'Antioxidant-Rich: The combination of pomegranate, grapes, and rosemary provides a potent dose of antioxidants, protecting your body from oxidative damage and supporting overall cellular health.\nDigestive Support: Pears are high in fiber, promoting healthy digestion and supporting gut health.\nHeart Health: Red grapes and pomegranate are both known for their heart-healthy benefits, including improving circulation and reducing inflammation.\nHydration and Refreshment: The sparkling water adds a refreshing effervescence, making this smoothie a perfect choice for hydration without added sugars.'
+          },
+          {
+            id: 3,
+            paragraphTitle: "Allergy Information",
+            paragraphTextSmaller: "The Pomegranate Orchard Blend Smoothie is free from common allergens like nuts, dairy, and gluten. However, it is prepared in a facility that processes these allergens, so cross-contamination may occur. If you have any concerns about allergies, especially related to fruit or herbs, please consult your healthcare provider."
+          }
+        ],
+      additionalInformations: [
+        {
+          id: 1,
+          title: "Size",
+          text: ["Large", "Medium", "Small"].join(', ')
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          customerName: "Martha",
+          rate: "Perfect",
+          customerReview: "That was the amazing experience for my soul and senses. I'm definitely going to buy it again!",
+          date: "2025-07-09T14:30:00-07:00",
+        },
+        {
+          id: 2,
+          customerName: "Sam",
+          rate: "Good",
+          customerReview: "Really delicious. I can't wait to try another products",
+          date: "2024-12-15T18:45:00-08:00",
+        },
+      ],
+      relatedProducts: relatedProductsExample,
+      },
+    ] },
 };
