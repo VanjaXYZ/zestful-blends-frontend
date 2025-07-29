@@ -7,7 +7,7 @@ import { TbTrash, TbPencil, TbCheck, TbXboxX } from "react-icons/tb";
 interface CartItemProps {
   id: string;
   name: string;
-  toppings: string[];
+  toppings?: string;
   imageSrc: any;
   price: number;
   quantity: number;
@@ -68,7 +68,7 @@ const CartItem = ({
           <p className="font-semibold">${price}</p>
         </div>
         <div className="flex flex-col flex-wrap gap-2">
-          <p>Toppings: {toppings && toppings.join(", ")}</p>
+          <p>Toppings: {toppings}</p>
         </div>
         {variant === "cart" ? (
           <div className="flex gap-2 justify-between">
