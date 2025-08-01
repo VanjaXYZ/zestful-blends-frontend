@@ -243,8 +243,8 @@ const [popupVisible, setPopupVisible] = useState(false);
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200"><path fill="#93BE3B" fillOpacity="1" d="M0,96L60,90.7C120,85,240,75,360,96C480,117,600,171,720,160C840,149,960,75,1080,53.3C1200,32,1320,64,1380,80L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
         </div>
 
-        <div className="flex p-10">
-          <div className="w-[50%] h-fit relative cursor-pointer flex-1">
+        <div className="flex p-10 max-sm:p-5 max-xl:flex-col max-xl:gap-8">
+          <div className="w-[50%] max-xl:w-full h-fit relative cursor-pointer flex-1">
             <Image src={product.images[imageIndex]} alt={product.productName} className="w-full h-full" onMouseEnter={() => setArrowsVisibility(true)} onMouseLeave={() => {setArrowsVisibility(false)}}/>
             {arrowsVisibility ? 
             <div className="absolute w-full h-full">
@@ -261,7 +261,7 @@ const [popupVisible, setPopupVisible] = useState(false);
             null
             }
           </div>
-          <div className="flex flex-col pl-[5%] gap-10 flex-1">
+          <div className="flex flex-col pl-[5%] max-xl:pl-0 gap-10 flex-1">
             <div>
               <h1 className={`${cherryBomb.className} text-5xl font-bold mb-4`}>{product.productName}</h1>
               <p className="text-xl font-semibold text-primary-green">Price: ${product.priceMin.toFixed(2)} - ${product.priceMax.toFixed(2)}</p>
@@ -320,8 +320,8 @@ const [popupVisible, setPopupVisible] = useState(false);
                       watchedSize === "Large" ? `$${(product.priceMax * itemsNumber).toFixed(2)}` :
                       null}</p>
 
-                  <div className="flex gap-4">
-                    <div className="flex gap-6 text-2xl items-center border border-black px-4">
+                  <div className="flex gap-4 max-sm:flex-col max-sm:items-center">
+                    <div className="flex gap-6 text-2xl items-center border border-black px-4 ">
                       <button type="button" onClick={() => setItemsNumber(prev => prev + 1)}>+</button>
                       <div className="w-6 text-center">{itemsNumber}</div>
                       <button type="button" onClick={() => setItemsNumber(prev => prev >1 ? prev - 1 : prev)}>&ndash;</button>
@@ -331,7 +331,7 @@ const [popupVisible, setPopupVisible] = useState(false);
                       onClick={() => {setSubmitAction("cart");}} 
                       className={`text-white text-2xl bg-black px-10 py-2`}>
                       {<div className="flex gap-4 items-center">
-                        <RiShoppingBag4Fill/>
+                        <RiShoppingBag4Fill className="max-sm:w-[50%]"/>
                         <p className={`${cherryBomb.className}`}>ADD TO CART</p>
                       </div>}
                     </button>
@@ -374,15 +374,15 @@ const [popupVisible, setPopupVisible] = useState(false);
           </div>
         </div>
 
-        <div className=" mx-10 mb-10 flex flex-col gap-10">
-          <div className="flex justify-center gap-16 border-t border-b text-2xl py-3">
+        <div className=" mx-10 max-xl:mx-5 mb-10 flex flex-col gap-10">
+          <div className="flex max-sm:flex-col max-sm:gap-8 justify-center gap-16 border-t border-b text-2xl py-3">
             <button onClick={() => scrollTo(descriptionRef)}>Description</button>
             <button onClick={() => scrollTo(additionalRef)}>Additional Information</button>
             <button onClick={() => scrollTo(reviewsRef)}>Reviews {`(${product.reviews ? product.reviews.length : 0})`}</button>
           </div>
-          <div ref={descriptionRef} className="scroll-mt-4">
+          <div ref={descriptionRef} className="scroll-mt-4 flex flex-col gap-8">
             {product.description?.map((paragraph, index) => (
-              <div className="flex flex-col gap-4" key={`${paragraph.id}-${index}`}>
+              <div className="flex flex-col gap-2" key={`${paragraph.id}-${index}`}>
                 {paragraph.paragraphTitle && <h3 className={`text-2xl text-primary-orange whitespace-pre-line ${cherryBomb.className}`}>{paragraph.paragraphTitle}</h3>}
                 {paragraph.paragraphTextBigger && <p className="text-xl whitespace-pre-line">{paragraph.paragraphTextBigger}</p>}
                 {paragraph.paragraphTextSmaller && <p className="text-lg whitespace-pre-line">{paragraph.paragraphTextSmaller}</p>}
@@ -398,19 +398,19 @@ const [popupVisible, setPopupVisible] = useState(false);
               </div>
             ))}
           </div>
-          <section aria-label="reviews" className="flex">
+          <section aria-label="reviews" className="flex max-lg:flex-col max-lg:gap-12">
             <div className="flex-1 flex flex-col gap-4">
               <h3 className={`text-3xl text-primary-green ${cherryBomb.className} scroll-mt-4`} ref={reviewsRef}>Reviews</h3>
               {product.reviews ? 
-                <div className="flex flex-col gap-4 mr-8 max-h-[400px] overflow-y-auto pr-2">
+                <div className="flex flex-col gap-4 mr-8 max-sm:mr-0 max-h-[400px] overflow-y-auto pr-2">
                   {product.reviews
                   ?.slice()
                   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                   .map((review, index) => (
                     <div key={`${review.id}-${index}`}  className="border border-2 p-4 flex flex-col gap-2">
                       <div className="flex justify-between">
-                        <p>customer: <span className="font-bold">{review.customerName}</span></p>
-                        <p>rate: <span className="font-bold">{review.rate}</span></p>
+                        <p className="w-[50%] break-words whitespace-normal">customer: <span className="font-bold">{review.customerName}</span></p>
+                        <p className="w-[50%] break-words whitespace-normal text-right">rate: <span className="font-bold">{review.rate}</span></p>
                       </div>
                       <p>{review.customerReview}</p>
                       <p className="flex justify-end">{review.date.slice(0,review.date.indexOf("T"))}</p>
@@ -421,7 +421,7 @@ const [popupVisible, setPopupVisible] = useState(false);
               }
             </div>
             <div className="flex flex-1 w-full justify-center">
-              <div className="flex flex-col w-[75%] gap-4 mr-4">
+              <div className="flex flex-col w-[75%] max-sm:w-full gap-4 mr-4 max-sm:mr-0">
                 <h3 className="text-2xl">
                   {product.reviews ?
                     `Be The Next To Review "${product.productName}"`:
@@ -458,7 +458,7 @@ const [popupVisible, setPopupVisible] = useState(false);
                       />
                       </div>
 
-                      <div className="flex w-full gap-8 my-4">
+                      <div className="flex w-full max-xl:flex-col max-xl:gap-2 gap-8 my-4">
                         <FormField
                           name="name"
                           render={({ field }) => (
@@ -533,20 +533,20 @@ const [popupVisible, setPopupVisible] = useState(false);
 
           <section aria-label="related products" className="flex flex-col gap-8">
             <h2 className={`${cherryBomb.className} text-4xl text-primary-green text-center mt-8`}>Related products</h2>
-            <div className="flex w-full justify-between gap-16">
+            <div className="flex w-full justify-between gap-16 flex-wrap">
               {product.relatedProducts?.map((relatedProduct, index) => {
                 const isWishlisted = wishlistState[relatedProduct.id] ?? false;
                 return (<div key={`${relatedProduct.id}-${index}`} className="flex flex-col flex-1 gap-1 items-center">
-                  <Link href={`/shop/${params.slug}/${relatedProduct.id}`}>
+                  <Link href={`/shop/${relatedProduct.group}/${relatedProduct.id}`}>
                     <Image src={relatedProduct.images[0]} alt="related product" className=""/>
                   </Link>
-                  <div className="flex justify-between items-center w-full">
-                    <Link href={`/shop/${params.slug}/${relatedProduct.id}`} className="w-[75%]">
-                      <Button className="w-full hover:bg-primary-green">
-                        SELECT OPTIONS
-                      </Button>
-                    </Link>
-                    {isWishlisted ? 
+                
+                  <Link href={`/shop/${relatedProduct.group}/${relatedProduct.id}`} className="w-[100%]">
+                    <Button className="w-full hover:bg-primary-green">
+                      SELECT OPTIONS
+                    </Button>
+                  </Link>
+                    {/* {isWishlisted ? 
                         
                         <div onClick={() => toggleWishlist(relatedProduct.id)} className="w-[10%] h-[50%] relative cursor-pointer">
                           <FaHeart className="w-full h-full text-white"/>
@@ -557,8 +557,8 @@ const [popupVisible, setPopupVisible] = useState(false);
                           <FaRegHeart className="w-full h-full text-white"/>
                           <FaPlus className="absolute bottom-0 left-0 text-primary-orange text-xs" />
                         </div>
-                    }
-                  </div>
+                    } */}
+                    
                   <div className="flex gap-4">
                     <StarRating rating={
                       (relatedProduct.reviews?.map(review =>
@@ -581,6 +581,7 @@ const [popupVisible, setPopupVisible] = useState(false);
         <div className="relative bg-[length:100%_100%] bg-no-repeat -mt-[1px]"
           style={{backgroundImage: `linear-gradient(to bottom, #FFC10C 15%, #6E8E2D  25%)`,}}>
             <div className="absolute w-full top-[-4px] h-4 bg-primary-yellow z-[-1]"></div>
+            <div className="absolute w-full bottom-[-3px] h-1 bg-[#6E8E2D] z-[100]"></div>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200"><path fill="#FFC10C" fillOpacity="1" d="M0,96L60,90.7C120,85,240,75,360,96C480,117,600,171,720,160C840,149,960,75,1080,53.3C1200,32,1320,64,1380,80L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
         </div>
 
