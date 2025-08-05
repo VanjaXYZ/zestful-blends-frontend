@@ -38,7 +38,7 @@ const MobileNavigationMenu = () => {
           <SheetHeader>
             <SheetTitle></SheetTitle>
             <SheetDescription className="flex justify-between">
-              <MobileTransformedLogo />
+              {MobileTransformedLogo && <MobileTransformedLogo />}
               <MobileNavLinkItems onNavigate={() => setIsOpen(false)}/>
             </SheetDescription>
           </SheetHeader>

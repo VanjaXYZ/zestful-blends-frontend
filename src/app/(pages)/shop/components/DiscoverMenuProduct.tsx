@@ -11,6 +11,8 @@ const DiscoverMenuProduct = ({
   imageSrc: string;
 }) => {
 
+  const productNameToLink = productName ===  "Salads" || productName === "Juices" || productName === "Shakes" ? `fruit-${productName}` : productName;
+
   return (
     <div className="flex justify-center flex-col items-center gap-4">
       <Image
@@ -20,7 +22,7 @@ const DiscoverMenuProduct = ({
         alt="Zestful Blends Product Image"
         className="rounded-full"
       />
-      <Link href={`/shop/${productName.includes(" ") ? productName.replace(/ /g, "-").toLowerCase() : productName.toLowerCase()}`}>
+      <Link href={`/shop/${productNameToLink.includes(" ") ? productNameToLink.replace(/ /g, "-").toLowerCase() : productNameToLink.toLowerCase()}`}>
         <Button className="bg-primary-orange text-white font-semibold rounded-full w-[150px] hover:bg-primary-green transition-colors">
           {productName}
         </Button>
