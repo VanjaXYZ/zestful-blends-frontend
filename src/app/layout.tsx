@@ -4,6 +4,7 @@ import TopNavigation from "./custom_components/header/TopNavigation";
 import HeaderInfo from "./custom_components/header_info/HeaderInfo";
 import "./globals.css";
 import SubscribeSection from "./custom_components/subscribe/SubscribeSection";
+import { AddressProvider } from "./(pages)/checkout/context/AddressContext";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -20,12 +21,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className + " w-full"}>
-        <HeaderInfo />
-        <TopNavigation />
+        <AddressProvider>
+          <HeaderInfo />
+          <TopNavigation />
 
-        {children}
-        <SubscribeSection />
+            {children}
+          <SubscribeSection />
+        </AddressProvider>
       </body>
     </html>
   );
 }
+
+

@@ -59,7 +59,7 @@ const TimeDropdown = ({
                   id={name}
                   className="bg-[#FBEEAC] w-full text-center"
                 >
-                  <option value="">Select time</option>
+                  <option value="ASAP">ASAP</option>
                   {times.map((time) => (
                     <option key={time} value={time}>
                       {time}

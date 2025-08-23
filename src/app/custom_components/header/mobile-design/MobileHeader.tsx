@@ -20,7 +20,7 @@ const MobileHeader = () => {
       <MobileLogoImage />
       <div className="flex gap-8 items-center flex-col">
         <NavIcons />
-        <NavOrderButton textColor="text-white" />
+        <NavOrderButton textColor="text-white" bgColor={isCheckout ? "bg-primary-green" : "bg-primary-orange"} />
       </div>
       <div className="w-full">
         <MobileNavigationMenu />

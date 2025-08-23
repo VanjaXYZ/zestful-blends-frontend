@@ -158,11 +158,13 @@ export const pages: Record<string, { title: string; products: Product[] }> = {
         id: "1",
         images: [Image1],
         productName: "Strawberry Juice",
+        group: "smoothies",
         priceMin: 9.70,
         priceMed: 10,
         priceMax: 16.00,
         isNewProduct: true,
         ingredients: ["Pineapple", "Yellow Pear", "Coconut water for a tropical taste"],
+        collectionOptions: ["Regular Blends", "another option"],
         sizes: ["Large", "Medium", "Small"],
         description: [
           {
