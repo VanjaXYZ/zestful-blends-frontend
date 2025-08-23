@@ -1,54 +1,62 @@
 "use client";
 
-import React from "react";
-import { Form } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { useForm , useFormContext} from "react-hook-form";
 import FormElement from "./FormElement";
 import FormElementBigger from "./FormElementBigger";
 
+
 const ContactInfo = () => {
+  const {control} = useFormContext();
   const form = useForm();
   const fieldWidth1 = 100;
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (
-    <div className="w-[80%] sm:w-[90%] max-sm:w-full bg-white border border-gray-300 rounded-xl p-4 flex flex-col gap-12 mb-16" style={{boxShadow: "inset 0px 1px 2.5px rgba(0, 0, 0, 0.15)" }}>
-      <h2 className="text-[#FCB131] font-bold text-2xl">Contact Info</h2>
-      <Form {...form}>
-        {/* <div className="flex max-2xl:flex-col gap-16">
-          <div className="flex flex-col gap-8">
-            <FormElement formElementName="First Name:" control={form.control} name="firstName" />
-            <FormElement formElementName="Last Name:" control={form.control} name="lastName" />
-          </div>
-          <div className="flex flex-col gap-8">
-            <FormElement formElementName="Email:" control={form.control} name="email" />
-            <FormElement formElementName="Phone:" control={form.control} name="phone" />
-          </div>
-        </div> */}
-        <div className={`flex gap-[5%] max-lg:flex-col max-sm:w-full max-lg:gap-4`}>
-          <div className={`flex flex-col flex-1 gap-4 max-sm:w-full`}>
-            <div className='w-[100%]'>
-              <h4>First Name</h4>
-              <FormElementBigger name="first name" fieldWidth={fieldWidth1} />
-              
-            </div>
-            <div>
-              <h4>Last Name</h4>
-              <FormElementBigger name="last name" fieldWidth={fieldWidth1} />
-            </div>
-          </div>
-          <div className={`flex flex-col flex-1 gap-4 max-sm:w-full`}>
-            <div>
-              <h4>Email</h4>
-              <FormElementBigger name="email" fieldWidth={fieldWidth1} />
-            </div>
-            <div>
-              <h4>Phone</h4>
-              <FormElementBigger name="phone" fieldWidth={fieldWidth1} />
-            </div>
-          </div>
+      <div className="w-[80%] sm:w-[90%] max-sm:w-full bg-white border border-gray-300 rounded-xl p-4 flex flex-col gap-4" style={{boxShadow: "inset 0px 1px 2.5px rgba(0, 0, 0, 0.15)" }}>
+        <h2 className="text-[#FCB131] font-bold text-2xl">Contact Info</h2>
+        <p>We&apos;ll use this email to send you details and updates about your order.</p>
+        <div className="flex items-center gap-4 w-[60%] max-xl:w-full">
+          <h4 className="font-semibold">Email: </h4>
+          
+            <FormElementBigger name="email" fieldWidth={fieldWidth1} />
+          
         </div>
-      </Form>
-    </div>
+        {!loggedIn && 
+        <div className="flex flex-col">
+          <p>You are currently checking out as a guest.</p>
+          <FormField
+            name="saveInfo"
+            render={({ field }) => (
+              <FormItem className="flex gap-2 items-start items-center">
+                <FormControl>
+                  <input 
+                    type="checkbox" 
+                    checked={isChecked} 
+                    onChange={(e) => {
+                      setIsChecked(e.target.checked);
+                      field.onChange(e);
+                    }}
+                    className="mt-1" />
+                </FormControl>
+                <label className="text-md">
+                  Create an account with Zestful Blends
+                </label>
+              </FormItem>
+            )}
+          />
+        </div>
+        }
+      </div>
+    
   );
 };
 

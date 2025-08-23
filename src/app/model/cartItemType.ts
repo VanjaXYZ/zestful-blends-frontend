@@ -8,12 +8,12 @@ export interface CartItemType {
   // price: number;
   // quantity: number;
   id: string,
-      name: string,
-      toppings?: string,
-      imageSrc: StaticImageData,
-      price: number | null,
-      quantity: number,
-      collectionOption?: string, 
-      size: string, 
-      fruits?: string
+  name: string,
+  toppings?: string,
+  imageSrc: StaticImageData,
+  price: number | null,
+  quantity: number,
+  collectionOption?: string, 
+  size: string, 
+  fruits?: string
 }

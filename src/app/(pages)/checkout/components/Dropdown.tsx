@@ -8,23 +8,21 @@ import { Form,
   FormField, } from "@/components/ui/form"
   import { useFormContext, Controller } from "react-hook-form";
 import { Label } from '@/components/ui/label';
-import { useCheckoutStore } from '@/app/store/checkoutStore';
+import { notFound } from "next/navigation";
 
-interface YearDropdownProps {
+interface DropdownProps {
   name: string;
   fieldWidth: number;
   range?: number;
+  options?: string[];
+  title: string;
 }
 
-const YearDropdown = ({name, fieldWidth, range=10}: YearDropdownProps) => {
+const Dropdown = ({name, fieldWidth, range=10, options, title}: DropdownProps) => {
   const {control} = useFormContext();
-  const setCurrentYear = useCheckoutStore((state) => state.setCurrentYear)
-
-  const thisYear = new Date().getFullYear();
-  const years = Array.from({length: range + 1}, (_, index) => thisYear + index );
 
   return (
-    <div className='flex items-center' style={{width: `38.5%`}}>
+    <div className='flex items-center' /*style={{width: `38.5%`}}*/>
       <FormField
         control={control}
         name={name}
@@ -35,21 +33,17 @@ const YearDropdown = ({name, fieldWidth, range=10}: YearDropdownProps) => {
             >
             </Label>
             <FormControl>
-              <div className='flex items-center justify-center h-10 bg-[#FBEEAC] px-2 border border-dashed border-orange-300 rounded-full mt-0 !mt-0'
+              <div className='flex items-center justify-centers h-10'
                    style={{ width: `${fieldWidth}%` }}>
                 <select
                   {...field}
                   id={name}
-                  className="bg-[#FBEEAC] w-full"
-                  onChange={(e) => {
-                    field.onChange(e);
-                    setCurrentYear(Number(e.target.value) === thisYear);
-                  }}
+                  className="w-full h-full h-10 bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full px-2"
                 >
-                  <option value="">Year</option>
-                  {years.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
+                  <option value="">{title}</option>
+                  {options?.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
                     </option>
                   ))}
                 </select>
@@ -63,4 +57,4 @@ const YearDropdown = ({name, fieldWidth, range=10}: YearDropdownProps) => {
   )
 }
 
-export default YearDropdown
+export default Dropdown
