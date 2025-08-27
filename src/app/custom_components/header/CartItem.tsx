@@ -65,7 +65,7 @@ const CartItem = ({
       <div className="flex flex-col w-full gap-2">
         <div className="flex justify-between">
           <p className="font-semibold">{name}</p>
-          <p className="font-semibold">${price}</p>
+          <p className="font-semibold">${price.toFixed(2)}</p>
         </div>
         <div className="flex flex-col flex-wrap gap-2">
           <p>Toppings: {toppings}</p>

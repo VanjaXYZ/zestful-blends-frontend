@@ -34,6 +34,8 @@ import useCartStore from "@/app/store/cartStore";
 import { useWatch } from "react-hook-form";
 import { loadCartItems } from "@/lib/mock/CartItems";
 import { CartItemType } from "@/app/model/cartItemType";
+import { usePathname } from "next/navigation";
+import clsx from "clsx"
 
 export default function ProductPage({ params }: { params: { slug: string; productId: string } }) {
   
@@ -75,13 +77,29 @@ export default function ProductPage({ params }: { params: { slug: string; produc
         toppings: data.toppings,
         imageSrc: product.images[0],
         size: data.size,
-        price: data.size === "Small"
+        priceBefore: data.size === "Small"
           ? product.priceMin * itemsNumber
           : data.size === "Medium"
           ? product.priceMed * itemsNumber
           : data.size === "Large"
           ? product.priceMax * itemsNumber
           : null,
+        price: 
+          (!(subscribed && pathname.includes("special-offers"))) ?
+          (data.size === "Small"
+          ? product.priceMin * itemsNumber
+          : data.size === "Medium"
+          ? product.priceMed * itemsNumber
+          : data.size === "Large"
+          ? product.priceMax * itemsNumber
+          : null) :
+          (data.size === "Small"
+          ? parseFloat((0.85 * product.priceMin * itemsNumber).toFixed(2))
+          : data.size === "Medium"
+          ? parseFloat((0.85 * product.priceMed * itemsNumber).toFixed(2))
+          : data.size === "Large"
+          ? parseFloat((0.85 * product.priceMax * itemsNumber).toFixed(2))
+          : null),
         quantity: currentQuantity,
         collectionOption: data.collectionOption,
         fruits: data.fruits,
@@ -97,13 +115,29 @@ export default function ProductPage({ params }: { params: { slug: string; produc
         toppings: data.toppings,
         imageSrc: product.images[0],
         size: data.size,
-        price: data.size === "Small"
+        priceBefore: data.size === "Small"
           ? product.priceMin * itemsNumber
           : data.size === "Medium"
           ? product.priceMed * itemsNumber
           : data.size === "Large"
           ? product.priceMax * itemsNumber
           : null,
+        price: 
+          (!(subscribed && pathname.includes("special-offers"))) ?
+          (data.size === "Small"
+          ? product.priceMin * itemsNumber
+          : data.size === "Medium"
+          ? product.priceMed * itemsNumber
+          : data.size === "Large"
+          ? product.priceMax * itemsNumber
+          : null) :
+          (data.size === "Small"
+          ? parseFloat((0.85 * product.priceMin * itemsNumber).toFixed(2))
+          : data.size === "Medium"
+          ? parseFloat((0.85 * product.priceMed * itemsNumber).toFixed(2))
+          : data.size === "Large"
+          ? parseFloat((0.85 * product.priceMax * itemsNumber).toFixed(2))
+          : null),
         quantity: currentQuantity,
         collectionOption: data.collectionOption,
         fruits: data.fruits,
@@ -232,6 +266,11 @@ export default function ProductPage({ params }: { params: { slug: string; produc
 
 const [popupVisible, setPopupVisible] = useState(false);
 
+const [subscribed, setSubscribed] = useState(true);
+
+const pathname= usePathname();
+console.log(pathname)
+
   return (
     <main>
 
@@ -315,10 +354,23 @@ const [popupVisible, setPopupVisible] = useState(false);
                     <p className={`text-primary-orange ${cherryBomb.className} text-3xl`}>Select Your Fruits</p>
                   <Checkbox text="CHOOSE UP TO 8 FRUTS FOR YOUR PLATTER"/>
 
-                  <p className="text-xl">{watchedSize === "Small" ? `$${(product.priceMin * itemsNumber).toFixed(2)}` :
+                  <p className={clsx(`text-xl`, subscribed && pathname.includes("special-offers") && `line-through`)}>
+                    {watchedSize === "Small" ? `$${(product.priceMin * itemsNumber).toFixed(2)}` :
                       watchedSize === "Medium" ? `$${(product.priceMed * itemsNumber).toFixed(2)}` :
                       watchedSize === "Large" ? `$${(product.priceMax * itemsNumber).toFixed(2)}` :
                       null}</p>
+
+                  {subscribed && pathname.includes("special-offers") &&
+                  <div>
+                    <p>You&apos;ve got 15% discount due to your subscription</p>
+                    <p>Final price for the product:</p>
+                    <p className="text-xl font-semibold pt-1"> 
+                      {watchedSize === "Small" ? `$${(0.85*product.priceMin * itemsNumber).toFixed(2)}` :
+                      watchedSize === "Medium" ? `$${(0.85*product.priceMed * itemsNumber).toFixed(2)}` :
+                      watchedSize === "Large" ? `$${(0.85*product.priceMax * itemsNumber).toFixed(2)}` :
+                      null} 
+                    </p>
+                  </div>}
 
                   <div className="flex gap-4 max-sm:flex-col max-sm:items-center">
                     <div className="flex gap-6 text-2xl items-center border border-black px-4 ">

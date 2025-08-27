@@ -86,6 +86,11 @@ const MyOrderReview = () => {
     0
   );
 
+  const subTotalBefore: number = cart.reduce(
+    (acc, product) => acc + (product.priceBefore ?? 0),
+    0
+  );
+
   const pickupTime = useCheckoutStore((state) => state.pickupTime);
   const pickUpVisibility = useCheckoutStore((state) => state.pickUpVisibility);
   const setDialogOpen = useCheckoutStore((state) => state.setDialogOpen);
@@ -258,13 +263,20 @@ const MyOrderReview = () => {
               <p>quantity: {orderedProduct.quantity}</p>
               <p>size: {orderedProduct.size}</p>
               {orderedProduct.collectionOption && <p>collection option: {orderedProduct.collectionOption}</p>}
-              <p className="ml-auto">${orderedProduct.price?.toFixed(2)}</p>
+              <div className={`${orderedProduct.price != orderedProduct.priceBefore && `flex gap-4`} ml-auto`}>
+                {orderedProduct.price != orderedProduct.priceBefore ? <p className="line-through">{`$${orderedProduct.priceBefore?.toFixed(2)}`}</p> : null}
+                <p className="ml-auto">${orderedProduct.price?.toFixed(2)}</p>
+              </div>
             </div>
           })}
           <div className="flex justify-between">
             <p className="font-bold">Sub Total:</p>
-            <p>${subTotal.toFixed(2)}</p>
+            <div className={`${(subTotal!= subTotalBefore) && "flex gap-4"}`}>
+              {subTotal!= subTotalBefore && <p className="line-through">${subTotalBefore.toFixed(2)}</p>}
+              <p className="font-semibold">${subTotal.toFixed(2)}</p>
+            </div>
           </div>
+          {(subTotal!= subTotalBefore) && <p className="ml-auto text-primary-green">You have saved ${(subTotalBefore-subTotal).toFixed(2)} thanks to your subscription. </p>}
         </div>
 
         <div className="mt-6 border-b border-t border-b-gray-300 border-t-gray-300">
@@ -320,10 +332,10 @@ const MyOrderReview = () => {
         <div className="flex flex-col gap-2 py-4">
           <div className="flex justify-between">
             <h3>Sub total: </h3>
-            <p>$ {subTotal.toFixed(2)}</p>
+            <p className="font-semibold">$ {subTotal.toFixed(2)}</p>
           </div>
           <div className="flex justify-between">
-            <h3>Discount: </h3>
+            <h3>Promo Code Discount: </h3>
             <p>-$ {(subTotal*discountPercent).toFixed(2)}</p>
           </div>
           <div className="flex justify-between">

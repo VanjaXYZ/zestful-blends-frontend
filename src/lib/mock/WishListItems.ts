@@ -7,6 +7,7 @@ interface mockWishListItems {
     name: string,
     toppings?: string,
     imageSrc: StaticImageData,
+    priceBefore: number;
     price: number,
     quantity: number,
     collectionOption?: string, 
