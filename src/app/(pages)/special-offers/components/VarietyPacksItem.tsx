@@ -3,17 +3,21 @@ import { VarietyPacksProps } from "./VarietyPacksList";
 import { Button } from "@/components/ui/button";
 import Image1 from "@/assets/couple-with-juices.png";
 import Image from "next/image";
+import { StaticImageData } from "next/image"
+import Link from "next/link";
 
 const VarietyPacksItem = ({
   packItem,
   isReversed,
+  imagePath
 }: {
   packItem: VarietyPacksProps;
   isReversed: boolean;
+  imagePath: string | StaticImageData
 }) => {
   return (
     <div
-      className={`flex flex-col lg:flex-row gap-6 items-stretch justify-center p-4 ${
+      className={`flex flex-col lg:flex-row gap-2 items-stretch justify-center p-4 ${
         isReversed ? "lg:flex-row-reverse" : ""
       }`}
     >
@@ -24,15 +28,17 @@ const VarietyPacksItem = ({
           <p className="text-sm leading-relaxed">{packItem.description}</p>
         </div>
         <div className="pt-6 flex justify-center">
-          <Button className="rounded-full bg-smooth-red hover:bg-smooth-red/90 w-full lg:w-[150px]">
-            Buy Now
-          </Button>
+          <Link href={`/shop/special-offers/${packItem.id}`}>
+            <Button className="rounded-full bg-smooth-red hover:bg-smooth-red/90 w-full lg:w-[150px]">
+              Buy Now
+            </Button>
+          </Link>
         </div>
       </div>
 
       <div className="relative w-full lg:w-[800px] aspect-[3/2] rounded-lg overflow-hidden">
         <Image
-          src={Image1}
+          src={imagePath}
           alt="Variety Pack"
           fill
           className="object-cover"

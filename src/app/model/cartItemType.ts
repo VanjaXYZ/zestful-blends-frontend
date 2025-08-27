@@ -11,6 +11,7 @@ export interface CartItemType {
   name: string,
   toppings?: string,
   imageSrc: StaticImageData,
+  priceBefore: number | null,
   price: number | null,
   quantity: number,
   collectionOption?: string, 
