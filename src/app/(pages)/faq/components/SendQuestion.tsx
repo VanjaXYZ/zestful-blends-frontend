@@ -4,12 +4,43 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Quote } from "lucide-react";
-import React, { InputHTMLAttributes, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useFaqState } from "@/app/store/faqStore";
+
+const formSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(5, "Message must be at least 5 characters").max(500, "Message mustn't contain more then 500 characters"),
+});
+
+type FormData = z.infer<typeof formSchema>;
 
 const SendQuestion = () => {
-  const [name, setName] = useState<string | undefined>("");
-  const [email, setEmail] = useState<string | undefined>("");
-  const [message, setMessage] = useState<string | undefined>("");
+
+  const router = useRouter();
+  
+  const showSuccess = useFaqState((state) => state.showSucces);
+  const setShowSuccess = useFaqState((state) => state.setShowSucces);
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("SEND:", data);
+    reset();
+    setShowSuccess(true);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row p-2">
       <div className="w-full">
@@ -18,76 +49,60 @@ const SendQuestion = () => {
         </h3>
         <article className="lg:max-w-md">
           <p className="text-white text-sm lg:text-base">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-            id magni consequuntur, dignissimos, reiciendis animi nobis dolore et
-            eligendi earum aut debitis beatae illo dicta recusandae. Dolor ut
-            earum doloremque. Cum tempore dolorum labore, quisquam perferendis
-            minus maxime inventore at aperiam rerum vitae quam iure.
+            This is where you can ask your question. Fill the form and send it.
           </p>
         </article>
       </div>
-      <div className="w-full flex flex-col gap-8 py-8">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full flex flex-col gap-8 py-8"
+      >
         <div className="flex flex-col lg:justify-around gap-4">
           <div className="w-full">
-            <Label
-              htmlFor="name"
-              className="text-white text-lg lg:text-xl font-semibold"
-            >
+            <Label htmlFor="name" className="text-white text-lg lg:text-xl font-semibold">
               NAME
             </Label>
             <Input
               id="name"
-              value={name}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setName(e.target.value)
-              }
+              {...register("name")}
               className="rounded-full bg-white border-none"
             />
+            {errors.name && <p className="text-red-700 text-sm pt-1">{errors.name.message}</p>}
           </div>
           <div className="w-full">
-            <Label
-              htmlFor="email"
-              className="text-white text-lg lg:text-xl font-semibold"
-            >
+            <Label htmlFor="email" className="text-white text-lg lg:text-xl font-semibold">
               EMAIL
             </Label>
             <Input
               id="email"
-              value={email}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setEmail(e.target.value)
-              }
+              {...register("email")}
               className="rounded-full bg-white border-none"
-              required
             />
+            {errors.email && <p className="text-red-700 text-sm pt-1">{errors.email.message}</p>}
           </div>
         </div>
         <div>
-          <Label
-            className="text-white text-lg lg:text-xl font-semibold"
-            htmlFor="message"
-          >
+          <Label htmlFor="message" className="text-white text-lg lg:text-xl font-semibold">
             MESSAGE
           </Label>
           <Textarea
             id="message"
+            {...register("message")}
             className="rounded-xl border-none bg-white min-h-52"
-            value={message}
-            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-              setMessage(e.target.value)
-            }
           />
+          {errors.message && <p className="text-red-700 text-sm pt-1">{errors.message.message}</p>}
         </div>
         <Button
           variant={"outline"}
-          className="rounded-full border-none bg-primary-orange text-white font-semibold text-xl hover:bg-primary-dark-orange"
+          className="rounded-full border-none bg-primary-orange text-white font-semibold text-xl hover:bg-primary-green"
           type="submit"
         >
           Send Message
         </Button>
-      </div>
+      </form>
     </div>
   );
 };
 
 export default SendQuestion;
+

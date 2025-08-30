@@ -14,13 +14,19 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { z } from "zod";
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
+import { useContactState } from "@/app/store/contactStore";
 
 const ContactForm = () => {
+
+  const setShowContactSucces = useContactState((state) => state.setShowContactSucces);
+
   const formSchema = z.object({
-    name: z.string().min(2),
-    email: z.string().min(2).max(50),
-    phone: z.string().min(4),
-    message: z.string().min(8).max(250),
+    name: z.string().min(2, "Name must contain at least 2 charakters"),
+    email: z.string().email("invalid email"),
+    phone: z.string().optional(),
+    message: z.string().min(8, "Message must contain at least 8 characters ").max(500, "Message mustn't contain more then 500 characters"),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -34,6 +40,7 @@ const ContactForm = () => {
   });
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    setShowContactSucces(true);
   }
   return (
     <section>
@@ -79,24 +86,42 @@ const ContactForm = () => {
               )}
             />
           </div>
-          <FormField
+          <div className="flex gap-2 items-center">
+            <div>{`Phone number (optional): `}</div>
+            <FormField
             control={form.control}
             name="phone"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input
+                  <PhoneInput
+                    {...field}
+                    defaultCountry="ca"
+                    forceDialCode
+                    onChange={(val) => field.onChange(val)}
+                    inputProps={{
+                      placeholder: "Enter phone number",
+                      className: "w-full rounded-r-md"
+                      // className: "w-[400px] max-sm:w-[100%] border-white rounded-full placeholder:text-neutral-300"
+                    }}
+                    // className={`h-10 bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full px-4`}
+                    // inputStyle={{backgroundColor: "#FBEEAC", border: "none"}}
+                    // style={{width: `${fieldWidth}%`}}
+                  />
+                  {/* <Input
                     placeholder="Enter Phone Number"
                     type="number"
                     {...field}
                     className="w-[400px] max-sm:w-[100%] border-white rounded-full placeholder:text-neutral-300"
-                  />
+                  /> */}
                 </FormControl>
 
                 <FormMessage />
               </FormItem>
             )}
           />
+          </div>
+          
           <FormField
             control={form.control}
             name="message"
@@ -105,6 +130,7 @@ const ContactForm = () => {
                 <FormControl>
                   <Textarea
                     id="message"
+                    placeholder="Message"
                     className="rounded-xl border-none bg-white min-h-52 w-[] resize-none"
                     {...field}
                     // value={message}
