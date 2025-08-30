@@ -1,3 +1,5 @@
+"use client"
+
 import Breadcrumbs from "@/app/custom_components/shared/Breadcrumbs";
 import React from "react";
 import AccordionElements from "./components/AccordionElements";
@@ -5,6 +7,9 @@ import Image from "next/image";
 import FourJuices from "@/assets/four-juices.png";
 import YellowJuice from "@/assets/Caribbean Bliss Smoothie-1.png";
 import SendQuestion from "./components/SendQuestion";
+import { useFaqState } from "@/app/store/faqStore";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export type AccordionProps = {
   id: string;
@@ -64,7 +69,13 @@ const accordionHealthData: AccordionProps[] = [
   },
 ];
 
-const page = () => {
+const Page = () => {
+
+  const router = useRouter();
+
+  const showSuccess = useFaqState((state) => state.showSucces);
+  const setShowSuccess = useFaqState((state) => state.setShowSucces);
+
   return (
     <main className="">
       <Breadcrumbs currentPageName="FAQ" />
@@ -107,11 +118,29 @@ const page = () => {
           </div>
         </div>
       </section>
-      <section className="lg:p-24 bg-primary-darkish-orange">
+      <section className="lg:p-24 bg-primary-yellow">
         <SendQuestion />
       </section>
+      {showSuccess && (
+        <div className="fixed z-[500] inset-0 flex items-center justify-center bg-black/70">
+          <div className="bg-white rounded-2xl m-4 p-8 max-w-md text-center flex flex-col gap-6">
+            <h2 className="text-2xl font-bold text-primary-green">
+              Your question has been sent!
+            </h2>
+            <p className="text-gray-700">
+              We will answer as soon as possible.
+            </p>
+            <Button
+              onClick={async () => {await router.push("/"); setShowSuccess(false)}}
+              className="rounded-full bg-primary-orange text-white font-semibold text-lg hover:bg-primary-green"
+            >
+              Go to homepage
+            </Button>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
 
-export default page;
+export default Page;

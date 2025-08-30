@@ -1,3 +1,5 @@
+"use client"
+
 import Breadcrumbs from "@/app/custom_components/shared/Breadcrumbs";
 import React from "react";
 import ContactForm from "./components/ContactForm";
@@ -6,8 +8,16 @@ import ContactOpeningHoursInfo from "./components/ContactOpeningHoursInfo";
 import ContactMoreInfo from "./components/ContactMoreInfo";
 import ContactMap from "./components/ContactMap";
 import ContactMessage from "./components/ContactMessage";
+import { useContactState } from "@/app/store/contactStore";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
-const page = () => {
+const Page = () => {
+
+  const showContactSuccess = useContactState((state) => state.showContactSucces);
+  const setShowContactSuccess = useContactState((state) => state.setShowContactSucces);
+  const router = useRouter();
+
   return (
     <main>
       <Breadcrumbs currentPageName="Contact Us" />
@@ -40,8 +50,26 @@ const page = () => {
         <div className="absolute w-full bottom-[-4px] h-4 bg-[#6E8E2D] z-[-1]"></div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 170"><path fill="#FFC10C" fillOpacity="1" d="M0,96L60,90.7C120,85,240,75,360,96C480,117,600,171,720,160C840,149,960,75,1080,53.3C1200,32,1320,64,1380,80L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
       </div>
+      {showContactSuccess && (
+        <div className="fixed z-[2000] inset-0 flex items-center justify-center bg-black/70">
+          <div className="bg-white rounded-2xl m-4 p-8 max-w-md text-center flex flex-col gap-6">
+            <h2 className="text-2xl font-bold text-primary-green">
+              Your question has been sent!
+            </h2>
+            <p className="text-gray-700">
+              We will answer as soon as possible.
+            </p>
+            <Button
+              onClick={async () => {await router.push("/"); setShowContactSuccess(false)}}
+              className="rounded-full bg-primary-orange text-white font-semibold text-lg hover:bg-primary-green"
+            >
+              Go to homepage
+            </Button>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
 
-export default page;
+export default Page;
