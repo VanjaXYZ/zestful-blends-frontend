@@ -6,6 +6,7 @@ import NavIcons from "./NavIcons";
 import NavLinkItems from "./NavLinkItems";
 import NavOrderButton from "./NavOrderButton";
 import styles from "./TopNavigation.module.css";
+import styless from "./TopNavSignUpLogin.module.css";
 
 import { usePathname } from "next/navigation";
 
@@ -14,13 +15,15 @@ const DesktopNavigationMenu = () => {
   const pathname = usePathname();
   const isCheckout = pathname === '/checkout'
   const isUserProfile = pathname === '/user-account' || pathname === '/personal-information' || pathname === '/history-order';
+  const isSignUpLogin = pathname === '/signup' || pathname === '/login';
 
   const navBgColor = (isCheckout || isUserProfile) ? 'bg-[#ED7905]' : 'bg-[#93BE3B]';
+  const style = isSignUpLogin ? styless.bottomWave : styles.bottomWave;
 
   return (
     <header className={`w-full hidden lg:block`}>
       <nav
-        className={`flex h-52 ${navBgColor} justify-between flex-col sm:flex-row py-4 px-12 w-full ${styles.bottomWave} lg:flex`}
+        className={`flex h-52 ${navBgColor} justify-between flex-col sm:flex-row py-4 px-12 w-full ${style} lg:flex`}
       >
         <div className="flex sm:w-3/4 gap-6">
           <LogoImage />
