@@ -26,7 +26,7 @@ const FormElementBiggerPI = ({name}: FormElementBiggerProps) => {
               <Input
                 // placeholder="..."
                 {...field}
-                className={`h-10 w-[75%] max-lg:w-[100%] bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full`}
+                className={`h-10 w-[100%] bg-[#FBEEAC] border border-dashed border-orange-300 rounded-full`}
               />
             </FormControl>
 

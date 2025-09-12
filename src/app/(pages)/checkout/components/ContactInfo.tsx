@@ -11,13 +11,15 @@ import {
 import { useForm , useFormContext} from "react-hook-form";
 import FormElement from "./FormElement";
 import FormElementBigger from "./FormElementBigger";
+import { useGeneralStore } from "@/app/store/generalStore";
 
 
 const ContactInfo = () => {
   const {control} = useFormContext();
   const form = useForm();
   const fieldWidth1 = 100;
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const loggedIn = useGeneralStore((state) => state.loggedIn)
+  const setLoggedIn = useGeneralStore((state) => state.setLoggedIn)
   const [isChecked, setIsChecked] = useState<boolean>(false);
 
   return (

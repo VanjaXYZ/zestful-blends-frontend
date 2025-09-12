@@ -32,7 +32,7 @@ const DesktopNavigationMenu = () => {
         <div className="sm:w-1/4">
           <div className="flex gap-6 justify-end items-center">
             <NavIcons />
-            <NavOrderButton textColor="text-black" bgColor={isCheckout ? "bg-primary-green" : "bg-primary-orange"} />
+            <NavOrderButton textColor="text-black" bgColor={(isCheckout || isUserProfile) ? "bg-primary-green" : "bg-primary-orange"} />
           </div>
         </div>
       </nav>
